@@ -1,0 +1,786 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0ECD4B2AD57D2ACE7EF2A5CB /* Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C385CE984B3CD7C2E564664 /* Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework */; };
+		41BB66BCC8191BBE4BC9A94E /* Pods_MippeumCalcuratorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C8599CBDC6AFC4B161D7433 /* Pods_MippeumCalcuratorTests.framework */; };
+		64DFF49524C4BA6900FF3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49424C4BA6900FF3976 /* AppDelegate.swift */; };
+		64DFF49724C4BA6900FF3976 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */; };
+		64DFF49924C4BA6900FF3976 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49824C4BA6900FF3976 /* ViewController.swift */; };
+		64DFF49C24C4BA6900FF3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64DFF49A24C4BA6900FF3976 /* Main.storyboard */; };
+		64DFF49F24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49D24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld */; };
+		64DFF4A124C4BA6C00FF3976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */; };
+		64DFF4A424C4BA6C00FF3976 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64DFF4A224C4BA6C00FF3976 /* LaunchScreen.storyboard */; };
+		64DFF4AF24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4AE24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift */; };
+		64DFF4BA24C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4B924C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift */; };
+		64DFF4CB24C4BAF000FF3976 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C724C4BAF000FF3976 /* APIService.swift */; };
+		64DFF4CC24C4BAF000FF3976 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C824C4BAF000FF3976 /* Model.swift */; };
+		64DFF4CD24C4BAF000FF3976 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C924C4BAF000FF3976 /* Util.swift */; };
+		64DFF4CE24C4BAF000FF3976 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4CA24C4BAF000FF3976 /* Cell.swift */; };
+		64DFF4D124C5665700FF3976 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4D024C5665700FF3976 /* OrderViewController.swift */; };
+		92A81F49B919656530502D4A /* Pods_MippeumCalcurator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020EF5E78CD8BCE44452BD44 /* Pods_MippeumCalcurator.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64DFF4AB24C4BA6C00FF3976 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64DFF48924C4BA6900FF3976 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64DFF49024C4BA6900FF3976;
+			remoteInfo = MippeumCalcurator;
+		};
+		64DFF4B624C4BA6C00FF3976 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64DFF48924C4BA6900FF3976 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64DFF49024C4BA6900FF3976;
+			remoteInfo = MippeumCalcurator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		020EF5E78CD8BCE44452BD44 /* Pods_MippeumCalcurator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MippeumCalcurator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		080FCCD0156A92ECA05EC2BB /* Pods-MippeumCalcurator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcurator.release.xcconfig"; path = "Target Support Files/Pods-MippeumCalcurator/Pods-MippeumCalcurator.release.xcconfig"; sourceTree = "<group>"; };
+		0C8599CBDC6AFC4B161D7433 /* Pods_MippeumCalcuratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MippeumCalcuratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C385CE984B3CD7C2E564664 /* Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FE27DF4594178A63297257D /* Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig"; path = "Target Support Files/Pods-MippeumCalcurator-MippeumCalcuratorUITests/Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig"; sourceTree = "<group>"; };
+		64DFF49124C4BA6900FF3976 /* MippeumCalcurator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MippeumCalcurator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DFF49424C4BA6900FF3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		64DFF49824C4BA6900FF3976 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64DFF49B24C4BA6900FF3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64DFF49E24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MippeumCalcurator.xcdatamodel; sourceTree = "<group>"; };
+		64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64DFF4A324C4BA6C00FF3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64DFF4A524C4BA6C00FF3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MippeumCalcuratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DFF4AE24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MippeumCalcuratorTests.swift; sourceTree = "<group>"; };
+		64DFF4B024C4BA6C00FF3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MippeumCalcuratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DFF4B924C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MippeumCalcuratorUITests.swift; sourceTree = "<group>"; };
+		64DFF4BB24C4BA6C00FF3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64DFF4C724C4BAF000FF3976 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		64DFF4C824C4BAF000FF3976 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		64DFF4C924C4BAF000FF3976 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		64DFF4CA24C4BAF000FF3976 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		64DFF4D024C5665700FF3976 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		76815164057644D4C64A1B7A /* Pods-MippeumCalcuratorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorTests.release.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorTests/Pods-MippeumCalcuratorTests.release.xcconfig"; sourceTree = "<group>"; };
+		B3A5C137E5356BD0D9D01134 /* Pods-MippeumCalcurator-MippeumCalcuratorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcurator-MippeumCalcuratorUITests.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcurator-MippeumCalcuratorUITests/Pods-MippeumCalcurator-MippeumCalcuratorUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B6D6F3D954120ADBD5A5147B /* Pods-MippeumCalcuratorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorTests.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorTests/Pods-MippeumCalcuratorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F8BC09BCCC8AE353DDFAC069 /* Pods-MippeumCalcurator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcurator.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcurator/Pods-MippeumCalcurator.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64DFF48E24C4BA6900FF3976 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				92A81F49B919656530502D4A /* Pods_MippeumCalcurator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DFF4A724C4BA6C00FF3976 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41BB66BCC8191BBE4BC9A94E /* Pods_MippeumCalcuratorTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DFF4B224C4BA6C00FF3976 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0ECD4B2AD57D2ACE7EF2A5CB /* Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4605C5C6C1D2A32150E5C0C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F8BC09BCCC8AE353DDFAC069 /* Pods-MippeumCalcurator.debug.xcconfig */,
+				080FCCD0156A92ECA05EC2BB /* Pods-MippeumCalcurator.release.xcconfig */,
+				B3A5C137E5356BD0D9D01134 /* Pods-MippeumCalcurator-MippeumCalcuratorUITests.debug.xcconfig */,
+				2FE27DF4594178A63297257D /* Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig */,
+				B6D6F3D954120ADBD5A5147B /* Pods-MippeumCalcuratorTests.debug.xcconfig */,
+				76815164057644D4C64A1B7A /* Pods-MippeumCalcuratorTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		64DFF48824C4BA6900FF3976 = {
+			isa = PBXGroup;
+			children = (
+				64DFF49324C4BA6900FF3976 /* MippeumCalcurator */,
+				64DFF4AD24C4BA6C00FF3976 /* MippeumCalcuratorTests */,
+				64DFF4B824C4BA6C00FF3976 /* MippeumCalcuratorUITests */,
+				64DFF49224C4BA6900FF3976 /* Products */,
+				4605C5C6C1D2A32150E5C0C2 /* Pods */,
+				996A00821BA0734E667109ED /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		64DFF49224C4BA6900FF3976 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF49124C4BA6900FF3976 /* MippeumCalcurator.app */,
+				64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorTests.xctest */,
+				64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64DFF49324C4BA6900FF3976 /* MippeumCalcurator */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4C724C4BAF000FF3976 /* APIService.swift */,
+				64DFF4CA24C4BAF000FF3976 /* Cell.swift */,
+				64DFF4C824C4BAF000FF3976 /* Model.swift */,
+				64DFF4C924C4BAF000FF3976 /* Util.swift */,
+				64DFF49424C4BA6900FF3976 /* AppDelegate.swift */,
+				64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */,
+				64DFF49824C4BA6900FF3976 /* ViewController.swift */,
+				64DFF4D024C5665700FF3976 /* OrderViewController.swift */,
+				64DFF49A24C4BA6900FF3976 /* Main.storyboard */,
+				64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */,
+				64DFF4A224C4BA6C00FF3976 /* LaunchScreen.storyboard */,
+				64DFF4A524C4BA6C00FF3976 /* Info.plist */,
+				64DFF49D24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld */,
+			);
+			path = MippeumCalcurator;
+			sourceTree = "<group>";
+		};
+		64DFF4AD24C4BA6C00FF3976 /* MippeumCalcuratorTests */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4AE24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift */,
+				64DFF4B024C4BA6C00FF3976 /* Info.plist */,
+			);
+			path = MippeumCalcuratorTests;
+			sourceTree = "<group>";
+		};
+		64DFF4B824C4BA6C00FF3976 /* MippeumCalcuratorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4B924C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift */,
+				64DFF4BB24C4BA6C00FF3976 /* Info.plist */,
+			);
+			path = MippeumCalcuratorUITests;
+			sourceTree = "<group>";
+		};
+		996A00821BA0734E667109ED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				020EF5E78CD8BCE44452BD44 /* Pods_MippeumCalcurator.framework */,
+				2C385CE984B3CD7C2E564664 /* Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework */,
+				0C8599CBDC6AFC4B161D7433 /* Pods_MippeumCalcuratorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64DFF49024C4BA6900FF3976 /* MippeumCalcurator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64DFF4BE24C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcurator" */;
+			buildPhases = (
+				014F40A0A1AA836297DAC7BD /* [CP] Check Pods Manifest.lock */,
+				64DFF48D24C4BA6900FF3976 /* Sources */,
+				64DFF48E24C4BA6900FF3976 /* Frameworks */,
+				64DFF48F24C4BA6900FF3976 /* Resources */,
+				832B6308C30514D93167177F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MippeumCalcurator;
+			productName = MippeumCalcurator;
+			productReference = 64DFF49124C4BA6900FF3976 /* MippeumCalcurator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64DFF4A924C4BA6C00FF3976 /* MippeumCalcuratorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64DFF4C124C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorTests" */;
+			buildPhases = (
+				3AA0C6A9B2361ED0D5E9A6E7 /* [CP] Check Pods Manifest.lock */,
+				64DFF4A624C4BA6C00FF3976 /* Sources */,
+				64DFF4A724C4BA6C00FF3976 /* Frameworks */,
+				64DFF4A824C4BA6C00FF3976 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64DFF4AC24C4BA6C00FF3976 /* PBXTargetDependency */,
+			);
+			name = MippeumCalcuratorTests;
+			productName = MippeumCalcuratorTests;
+			productReference = 64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		64DFF4B424C4BA6C00FF3976 /* MippeumCalcuratorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64DFF4C424C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorUITests" */;
+			buildPhases = (
+				E947C4960BCF2E4DF60C1F4C /* [CP] Check Pods Manifest.lock */,
+				64DFF4B124C4BA6C00FF3976 /* Sources */,
+				64DFF4B224C4BA6C00FF3976 /* Frameworks */,
+				64DFF4B324C4BA6C00FF3976 /* Resources */,
+				CC939DEC5A18881897A0000F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64DFF4B724C4BA6C00FF3976 /* PBXTargetDependency */,
+			);
+			name = MippeumCalcuratorUITests;
+			productName = MippeumCalcuratorUITests;
+			productReference = 64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64DFF48924C4BA6900FF3976 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1160;
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = "장태현";
+				TargetAttributes = {
+					64DFF49024C4BA6900FF3976 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					64DFF4A924C4BA6C00FF3976 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 64DFF49024C4BA6900FF3976;
+					};
+					64DFF4B424C4BA6C00FF3976 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 64DFF49024C4BA6900FF3976;
+					};
+				};
+			};
+			buildConfigurationList = 64DFF48C24C4BA6900FF3976 /* Build configuration list for PBXProject "MippeumCalcurator" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64DFF48824C4BA6900FF3976;
+			productRefGroup = 64DFF49224C4BA6900FF3976 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64DFF49024C4BA6900FF3976 /* MippeumCalcurator */,
+				64DFF4A924C4BA6C00FF3976 /* MippeumCalcuratorTests */,
+				64DFF4B424C4BA6C00FF3976 /* MippeumCalcuratorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64DFF48F24C4BA6900FF3976 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DFF4A424C4BA6C00FF3976 /* LaunchScreen.storyboard in Resources */,
+				64DFF4A124C4BA6C00FF3976 /* Assets.xcassets in Resources */,
+				64DFF49C24C4BA6900FF3976 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DFF4A824C4BA6C00FF3976 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DFF4B324C4BA6C00FF3976 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		014F40A0A1AA836297DAC7BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MippeumCalcurator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3AA0C6A9B2361ED0D5E9A6E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MippeumCalcuratorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		832B6308C30514D93167177F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MippeumCalcurator/Pods-MippeumCalcurator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MippeumCalcurator/Pods-MippeumCalcurator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MippeumCalcurator/Pods-MippeumCalcurator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC939DEC5A18881897A0000F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MippeumCalcurator-MippeumCalcuratorUITests/Pods-MippeumCalcurator-MippeumCalcuratorUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MippeumCalcurator-MippeumCalcuratorUITests/Pods-MippeumCalcurator-MippeumCalcuratorUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MippeumCalcurator-MippeumCalcuratorUITests/Pods-MippeumCalcurator-MippeumCalcuratorUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E947C4960BCF2E4DF60C1F4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MippeumCalcurator-MippeumCalcuratorUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64DFF48D24C4BA6900FF3976 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DFF49924C4BA6900FF3976 /* ViewController.swift in Sources */,
+				64DFF4CB24C4BAF000FF3976 /* APIService.swift in Sources */,
+				64DFF49524C4BA6900FF3976 /* AppDelegate.swift in Sources */,
+				64DFF4CC24C4BAF000FF3976 /* Model.swift in Sources */,
+				64DFF4CD24C4BAF000FF3976 /* Util.swift in Sources */,
+				64DFF4CE24C4BAF000FF3976 /* Cell.swift in Sources */,
+				64DFF49724C4BA6900FF3976 /* SceneDelegate.swift in Sources */,
+				64DFF49F24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld in Sources */,
+				64DFF4D124C5665700FF3976 /* OrderViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DFF4A624C4BA6C00FF3976 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DFF4AF24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DFF4B124C4BA6C00FF3976 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DFF4BA24C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64DFF4AC24C4BA6C00FF3976 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64DFF49024C4BA6900FF3976 /* MippeumCalcurator */;
+			targetProxy = 64DFF4AB24C4BA6C00FF3976 /* PBXContainerItemProxy */;
+		};
+		64DFF4B724C4BA6C00FF3976 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64DFF49024C4BA6900FF3976 /* MippeumCalcurator */;
+			targetProxy = 64DFF4B624C4BA6C00FF3976 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		64DFF49A24C4BA6900FF3976 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64DFF49B24C4BA6900FF3976 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		64DFF4A224C4BA6C00FF3976 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64DFF4A324C4BA6C00FF3976 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64DFF4BC24C4BA6C00FF3976 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		64DFF4BD24C4BA6C00FF3976 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64DFF4BF24C4BA6C00FF3976 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8BC09BCCC8AE353DDFAC069 /* Pods-MippeumCalcurator.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G67T3826C4;
+				INFOPLIST_FILE = MippeumCalcurator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcurator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64DFF4C024C4BA6C00FF3976 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 080FCCD0156A92ECA05EC2BB /* Pods-MippeumCalcurator.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G67T3826C4;
+				INFOPLIST_FILE = MippeumCalcurator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcurator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64DFF4C224C4BA6C00FF3976 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6D6F3D954120ADBD5A5147B /* Pods-MippeumCalcuratorTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G67T3826C4;
+				INFOPLIST_FILE = MippeumCalcuratorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcuratorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MippeumCalcurator.app/MippeumCalcurator";
+			};
+			name = Debug;
+		};
+		64DFF4C324C4BA6C00FF3976 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 76815164057644D4C64A1B7A /* Pods-MippeumCalcuratorTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G67T3826C4;
+				INFOPLIST_FILE = MippeumCalcuratorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcuratorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MippeumCalcurator.app/MippeumCalcurator";
+			};
+			name = Release;
+		};
+		64DFF4C524C4BA6C00FF3976 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3A5C137E5356BD0D9D01134 /* Pods-MippeumCalcurator-MippeumCalcuratorUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G67T3826C4;
+				INFOPLIST_FILE = MippeumCalcuratorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcuratorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MippeumCalcurator;
+			};
+			name = Debug;
+		};
+		64DFF4C624C4BA6C00FF3976 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FE27DF4594178A63297257D /* Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G67T3826C4;
+				INFOPLIST_FILE = MippeumCalcuratorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcuratorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MippeumCalcurator;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64DFF48C24C4BA6900FF3976 /* Build configuration list for PBXProject "MippeumCalcurator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64DFF4BC24C4BA6C00FF3976 /* Debug */,
+				64DFF4BD24C4BA6C00FF3976 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64DFF4BE24C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcurator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64DFF4BF24C4BA6C00FF3976 /* Debug */,
+				64DFF4C024C4BA6C00FF3976 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64DFF4C124C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64DFF4C224C4BA6C00FF3976 /* Debug */,
+				64DFF4C324C4BA6C00FF3976 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64DFF4C424C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64DFF4C524C4BA6C00FF3976 /* Debug */,
+				64DFF4C624C4BA6C00FF3976 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		64DFF49D24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				64DFF49E24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodel */,
+			);
+			currentVersion = 64DFF49E24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodel */;
+			path = MippeumCalcurator.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 64DFF48924C4BA6900FF3976 /* Project object */;
+}
