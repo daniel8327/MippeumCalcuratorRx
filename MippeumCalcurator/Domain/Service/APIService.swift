@@ -12,10 +12,10 @@ import RxSwift
 class APIService {
 
     // 짧은거
-    //static let url = "https://firebasestorage.googleapis.com/v0/b/testdaniel111-58bd3.appspot.com/o/a.json?alt=media&token=df8bfeab-41c2-4428-b4c0-cc1f5536a198"
+    static let url = "https://firebasestorage.googleapis.com/v0/b/testdaniel111-58bd3.appspot.com/o/a.json?alt=media&token=df8bfeab-41c2-4428-b4c0-cc1f5536a198"
     
     // 긴거 
-    static let url = "https://firebasestorage.googleapis.com/v0/b/testdaniel111-58bd3.appspot.com/o/b.json?alt=media&token=9e69849d-baa1-45f7-a491-2f19226c8b4e"
+    //static let url = "https://firebasestorage.googleapis.com/v0/b/testdaniel111-58bd3.appspot.com/o/b.json?alt=media&token=9e69849d-baa1-45f7-a491-2f19226c8b4e"
     
     static func fetchAllMenus(onComplete: @escaping (Result<Data, Error>) -> Void) {
         URLSession.shared.dataTask(with: URL(string: url)!) { data, res, err in
