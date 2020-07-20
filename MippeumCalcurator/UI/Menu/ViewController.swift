@@ -14,16 +14,12 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setBinding()
         fetch()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,6 +33,16 @@ class ViewController: UIViewController {
     // MARK: - UI Logic
     
     func setBinding() {
+        
+        rx.viewWillAppear
+            .debug("viewWillAppear")
+            .map { _ in true}
+            //.take(1)
+            .subscribe(onNext: { [weak navigationController] _ in
+                navigationController?.isNavigationBarHidden = true
+            })
+            .disposed(by: disposeBag)
+
         // 당겨서 새로고침
         let refreshControl = UIRefreshControl()
         refreshControl.rx.controlEvent(.valueChanged)

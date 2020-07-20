@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MippeumCalcurator.xcodeproj">
+      location = "group:/Users/danielchang/Dev/MippeumCalcurator/MippeumCalcuratorRx.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

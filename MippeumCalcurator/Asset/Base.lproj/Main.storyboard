@@ -75,9 +75,6 @@
                                                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqT-CK-ljj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="122.66666666666667" height="30.333333333333332"/>
                                                                     <state key="normal" title="미쁨김밥"/>
-                                                                    <connections>
-                                                                        <action selector="onAddCount:" destination="S2u-L6-wVu" eventType="touchUpInside" id="mJl-qR-vH6"/>
-                                                                    </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="(" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iw-Tu-KaW">
                                                                     <rect key="frame" x="123.66666666666666" y="0.0" width="6.3333333333333428" height="30.333333333333332"/>
@@ -112,25 +109,16 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                     <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <state key="normal" title="-1"/>
-                                                                    <connections>
-                                                                        <action selector="onAddCount:" destination="S2u-L6-wVu" eventType="touchUpInside" id="G3N-eZ-q16"/>
-                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRX-xf-DJM">
                                                                     <rect key="frame" x="38" y="0.0" width="30" height="30"/>
                                                                     <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <state key="normal" title="+5"/>
-                                                                    <connections>
-                                                                        <action selector="onAddCount:" destination="S2u-L6-wVu" eventType="touchUpInside" id="P8C-ff-5Uo"/>
-                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yby-Wd-p1J">
                                                                     <rect key="frame" x="76" y="0.0" width="30" height="30"/>
                                                                     <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <state key="normal" title="+10"/>
-                                                                    <connections>
-                                                                        <action selector="onAddCount:" destination="S2u-L6-wVu" eventType="touchUpInside" id="2jy-AR-Fx1"/>
-                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -148,8 +136,11 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="add10Button" destination="yby-Wd-p1J" id="XMy-Bv-x2g"/>
+                                                    <outlet property="add5Button" destination="QRX-xf-DJM" id="4kA-Bh-QRw"/>
                                                     <outlet property="count" destination="Ewe-Gf-JhX" id="WaF-5b-UWz"/>
                                                     <outlet property="price" destination="3kE-qb-5eJ" id="SvH-d7-GhY"/>
+                                                    <outlet property="subtractButton" destination="GpX-9J-7Eo" id="553-Pc-tNR"/>
                                                     <outlet property="title" destination="PqT-CK-ljj" id="mcg-eX-Px9"/>
                                                 </connections>
                                             </tableViewCell>

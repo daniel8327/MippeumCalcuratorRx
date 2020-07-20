@@ -49,7 +49,7 @@
 		0C8599CBDC6AFC4B161D7433 /* Pods_MippeumCalcuratorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MippeumCalcuratorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C385CE984B3CD7C2E564664 /* Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MippeumCalcurator_MippeumCalcuratorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FE27DF4594178A63297257D /* Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig"; path = "Target Support Files/Pods-MippeumCalcurator-MippeumCalcuratorUITests/Pods-MippeumCalcurator-MippeumCalcuratorUITests.release.xcconfig"; sourceTree = "<group>"; };
-		64DFF49124C4BA6900FF3976 /* MippeumCalcurator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MippeumCalcurator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DFF49124C4BA6900FF3976 /* MippeumCalcuratorRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MippeumCalcuratorRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DFF49424C4BA6900FF3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64DFF49824C4BA6900FF3976 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,10 +58,10 @@
 		64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64DFF4A324C4BA6C00FF3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64DFF4A524C4BA6C00FF3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MippeumCalcuratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorRxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MippeumCalcuratorRxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DFF4AE24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MippeumCalcuratorTests.swift; sourceTree = "<group>"; };
 		64DFF4B024C4BA6C00FF3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MippeumCalcuratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorRxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MippeumCalcuratorRxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DFF4B924C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MippeumCalcuratorUITests.swift; sourceTree = "<group>"; };
 		64DFF4BB24C4BA6C00FF3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64DFF4C724C4BAF000FF3976 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
@@ -131,9 +131,9 @@
 		64DFF49224C4BA6900FF3976 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64DFF49124C4BA6900FF3976 /* MippeumCalcurator.app */,
-				64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorTests.xctest */,
-				64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorUITests.xctest */,
+				64DFF49124C4BA6900FF3976 /* MippeumCalcuratorRx.app */,
+				64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorRxTests.xctest */,
+				64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorRxUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,18 +141,11 @@
 		64DFF49324C4BA6900FF3976 /* MippeumCalcurator */ = {
 			isa = PBXGroup;
 			children = (
-				64DFF4C724C4BAF000FF3976 /* APIService.swift */,
-				64DFF4CA24C4BAF000FF3976 /* Cell.swift */,
-				64DFF4C824C4BAF000FF3976 /* Model.swift */,
-				64DFF4C924C4BAF000FF3976 /* Util.swift */,
-				64DFF49424C4BA6900FF3976 /* AppDelegate.swift */,
-				64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */,
-				64DFF49824C4BA6900FF3976 /* ViewController.swift */,
-				64DFF4D024C5665700FF3976 /* OrderViewController.swift */,
-				64DFF49A24C4BA6900FF3976 /* Main.storyboard */,
-				64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */,
-				64DFF4A224C4BA6C00FF3976 /* LaunchScreen.storyboard */,
-				64DFF4A524C4BA6C00FF3976 /* Info.plist */,
+				64DFF4D224C5E96C00FF3976 /* App */,
+				64DFF4D324C5E98700FF3976 /* Asset */,
+				64DFF4D624C5E9DF00FF3976 /* Domain */,
+				64DFF4DD24C5EA8000FF3976 /* UI */,
+				64DFF4DE24C5EACA00FF3976 /* Util */,
 				64DFF49D24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld */,
 			);
 			path = MippeumCalcurator;
@@ -176,6 +169,85 @@
 			path = MippeumCalcuratorUITests;
 			sourceTree = "<group>";
 		};
+		64DFF4D224C5E96C00FF3976 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF49424C4BA6900FF3976 /* AppDelegate.swift */,
+				64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */,
+				64DFF4A524C4BA6C00FF3976 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		64DFF4D324C5E98700FF3976 /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF49A24C4BA6900FF3976 /* Main.storyboard */,
+				64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */,
+				64DFF4A224C4BA6C00FF3976 /* LaunchScreen.storyboard */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		64DFF4D424C5E9DA00FF3976 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4C824C4BAF000FF3976 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		64DFF4D524C5E9DD00FF3976 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4C724C4BAF000FF3976 /* APIService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		64DFF4D624C5E9DF00FF3976 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4D524C5E9DD00FF3976 /* Service */,
+				64DFF4D424C5E9DA00FF3976 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		64DFF4D724C5E9DF00FF3976 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF49824C4BA6900FF3976 /* ViewController.swift */,
+				64DFF4CA24C4BAF000FF3976 /* Cell.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		64DFF4D824C5E9DF00FF3976 /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4D024C5665700FF3976 /* OrderViewController.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		64DFF4DD24C5EA8000FF3976 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4D724C5E9DF00FF3976 /* Menu */,
+				64DFF4D824C5E9DF00FF3976 /* Order */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		64DFF4DE24C5EACA00FF3976 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4C924C4BAF000FF3976 /* Util.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		996A00821BA0734E667109ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,9 +261,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		64DFF49024C4BA6900FF3976 /* MippeumCalcurator */ = {
+		64DFF49024C4BA6900FF3976 /* MippeumCalcuratorRx */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64DFF4BE24C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcurator" */;
+			buildConfigurationList = 64DFF4BE24C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorRx" */;
 			buildPhases = (
 				014F40A0A1AA836297DAC7BD /* [CP] Check Pods Manifest.lock */,
 				64DFF48D24C4BA6900FF3976 /* Sources */,
@@ -203,14 +275,14 @@
 			);
 			dependencies = (
 			);
-			name = MippeumCalcurator;
+			name = MippeumCalcuratorRx;
 			productName = MippeumCalcurator;
-			productReference = 64DFF49124C4BA6900FF3976 /* MippeumCalcurator.app */;
+			productReference = 64DFF49124C4BA6900FF3976 /* MippeumCalcuratorRx.app */;
 			productType = "com.apple.product-type.application";
 		};
-		64DFF4A924C4BA6C00FF3976 /* MippeumCalcuratorTests */ = {
+		64DFF4A924C4BA6C00FF3976 /* MippeumCalcuratorRxTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64DFF4C124C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorTests" */;
+			buildConfigurationList = 64DFF4C124C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorRxTests" */;
 			buildPhases = (
 				3AA0C6A9B2361ED0D5E9A6E7 /* [CP] Check Pods Manifest.lock */,
 				64DFF4A624C4BA6C00FF3976 /* Sources */,
@@ -222,14 +294,14 @@
 			dependencies = (
 				64DFF4AC24C4BA6C00FF3976 /* PBXTargetDependency */,
 			);
-			name = MippeumCalcuratorTests;
+			name = MippeumCalcuratorRxTests;
 			productName = MippeumCalcuratorTests;
-			productReference = 64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorTests.xctest */;
+			productReference = 64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorRxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		64DFF4B424C4BA6C00FF3976 /* MippeumCalcuratorUITests */ = {
+		64DFF4B424C4BA6C00FF3976 /* MippeumCalcuratorRxUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64DFF4C424C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorUITests" */;
+			buildConfigurationList = 64DFF4C424C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorRxUITests" */;
 			buildPhases = (
 				E947C4960BCF2E4DF60C1F4C /* [CP] Check Pods Manifest.lock */,
 				64DFF4B124C4BA6C00FF3976 /* Sources */,
@@ -242,9 +314,9 @@
 			dependencies = (
 				64DFF4B724C4BA6C00FF3976 /* PBXTargetDependency */,
 			);
-			name = MippeumCalcuratorUITests;
+			name = MippeumCalcuratorRxUITests;
 			productName = MippeumCalcuratorUITests;
-			productReference = 64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorUITests.xctest */;
+			productReference = 64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorRxUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -270,7 +342,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 64DFF48C24C4BA6900FF3976 /* Build configuration list for PBXProject "MippeumCalcurator" */;
+			buildConfigurationList = 64DFF48C24C4BA6900FF3976 /* Build configuration list for PBXProject "MippeumCalcuratorRx" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -283,9 +355,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				64DFF49024C4BA6900FF3976 /* MippeumCalcurator */,
-				64DFF4A924C4BA6C00FF3976 /* MippeumCalcuratorTests */,
-				64DFF4B424C4BA6C00FF3976 /* MippeumCalcuratorUITests */,
+				64DFF49024C4BA6900FF3976 /* MippeumCalcuratorRx */,
+				64DFF4A924C4BA6C00FF3976 /* MippeumCalcuratorRxTests */,
+				64DFF4B424C4BA6C00FF3976 /* MippeumCalcuratorRxUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -458,12 +530,12 @@
 /* Begin PBXTargetDependency section */
 		64DFF4AC24C4BA6C00FF3976 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 64DFF49024C4BA6900FF3976 /* MippeumCalcurator */;
+			target = 64DFF49024C4BA6900FF3976 /* MippeumCalcuratorRx */;
 			targetProxy = 64DFF4AB24C4BA6C00FF3976 /* PBXContainerItemProxy */;
 		};
 		64DFF4B724C4BA6C00FF3976 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 64DFF49024C4BA6900FF3976 /* MippeumCalcurator */;
+			target = 64DFF49024C4BA6900FF3976 /* MippeumCalcuratorRx */;
 			targetProxy = 64DFF4B624C4BA6C00FF3976 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -609,7 +681,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G67T3826C4;
-				INFOPLIST_FILE = MippeumCalcurator/Info.plist;
+				INFOPLIST_FILE = MippeumCalcurator/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -628,7 +700,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G67T3826C4;
-				INFOPLIST_FILE = MippeumCalcurator/Info.plist;
+				INFOPLIST_FILE = MippeumCalcurator/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -648,7 +720,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G67T3826C4;
-				INFOPLIST_FILE = MippeumCalcuratorTests/Info.plist;
+				INFOPLIST_FILE = MippeumCalcuratorTests/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -659,7 +731,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MippeumCalcurator.app/MippeumCalcurator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MippeumCalcuratorRx.app/MippeumCalcuratorRx";
 			};
 			name = Debug;
 		};
@@ -671,7 +743,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G67T3826C4;
-				INFOPLIST_FILE = MippeumCalcuratorTests/Info.plist;
+				INFOPLIST_FILE = MippeumCalcuratorTests/App/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -682,7 +754,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MippeumCalcurator.app/MippeumCalcurator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MippeumCalcuratorRx.app/MippeumCalcuratorRx";
 			};
 			name = Release;
 		};
@@ -693,7 +765,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G67T3826C4;
-				INFOPLIST_FILE = MippeumCalcuratorUITests/Info.plist;
+				INFOPLIST_FILE = MippeumCalcuratorUITests/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -714,7 +786,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G67T3826C4;
-				INFOPLIST_FILE = MippeumCalcuratorUITests/Info.plist;
+				INFOPLIST_FILE = MippeumCalcuratorUITests/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -731,7 +803,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		64DFF48C24C4BA6900FF3976 /* Build configuration list for PBXProject "MippeumCalcurator" */ = {
+		64DFF48C24C4BA6900FF3976 /* Build configuration list for PBXProject "MippeumCalcuratorRx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64DFF4BC24C4BA6C00FF3976 /* Debug */,
@@ -740,7 +812,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64DFF4BE24C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcurator" */ = {
+		64DFF4BE24C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorRx" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64DFF4BF24C4BA6C00FF3976 /* Debug */,
@@ -749,7 +821,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64DFF4C124C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorTests" */ = {
+		64DFF4C124C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorRxTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64DFF4C224C4BA6C00FF3976 /* Debug */,
@@ -758,7 +830,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64DFF4C424C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorUITests" */ = {
+		64DFF4C424C4BA6C00FF3976 /* Build configuration list for PBXNativeTarget "MippeumCalcuratorRxUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				64DFF4C524C4BA6C00FF3976 /* Debug */,

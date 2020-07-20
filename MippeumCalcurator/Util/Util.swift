@@ -16,13 +16,10 @@ extension Int {
         return formatter.string(from: NSNumber(value: self)) ?? ""
     }
     
-    
-    // String To Decimal "9000" -> 9,000
+    // Int To String With Decimal Type ex) 9000 -> "9,000"
     func toDecimalFormat() -> String {
-        
         let lo_numFormat = NumberFormatter()
         lo_numFormat.numberStyle = .decimal
-        
         return lo_numFormat.string(from: NSNumber(value:self)) ?? "0"
     }
 }
