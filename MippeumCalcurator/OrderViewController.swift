@@ -50,7 +50,10 @@ class OrderViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setBinding()
     }
+    
     // MARK: - UI Logic
      
     func setBinding() {

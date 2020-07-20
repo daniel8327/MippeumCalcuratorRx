@@ -25,7 +25,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MippeumCalcurator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -160,7 +159,7 @@
                                         <rect key="frame" x="0.0" y="589" width="414" height="127.33333333333337"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFO-It-QUB">
-                                                <rect key="frame" x="20" y="10" width="39" height="30"/>
+                                                <rect key="frame" x="20" y="9.9999999999999982" width="39" height="30.333333333333329"/>
                                                 <state key="normal" title="초기화"/>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dCG-6S-bGZ">
@@ -241,6 +240,7 @@
                         <segue destination="oFE-gJ-9tb" kind="show" identifier="OrderViewController" id="PMU-0u-Xd2"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74" y="145"/>
         </scene>
@@ -380,7 +380,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="orderList" destination="Ops-n7-fiQ" id="whX-4y-FwW"/>
+                        <outlet property="orderList" destination="Ops-n7-fiQ" id="sbS-J6-JLd"/>
                         <outlet property="totalPrice" destination="Bed-3Q-Kzr" id="PaW-E7-nwa"/>
                     </connections>
                 </viewController>

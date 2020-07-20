@@ -46,25 +46,24 @@ class ViewController: UIViewController {
         
         // viewWillAppear || clearButton 클릭시
         Observable.merge([rx.viewWillAppear.map{ _ in }, clearButton.rx.tap.map{ _ in }])
-        .debug("merge")
-        .withLatestFrom(menuItems)
-        .map { $0.map { ($0.menu, 0)}}
-        .bind(to: menuItems)
-        .disposed(by: disposeBag)
-
-        /* 취소 clearButton 클릭시
-        clearButton.rx.tap
-            .debug("clearButton")
+            .debug("merge")
             .withLatestFrom(menuItems)
             .map { $0.map { ($0.menu, 0)}}
             .bind(to: menuItems)
-            .disposed(by: disposeBag)*/
+            .disposed(by: disposeBag)
+        
+        /* 취소 clearButton 클릭시
+         clearButton.rx.tap
+         .debug("clearButton")
+         .withLatestFrom(menuItems)
+         .map { $0.map { ($0.menu, 0)}}
+         .bind(to: menuItems)
+         .disposed(by: disposeBag)*/
         
         // tableView bind
         menuItems
             .debug("tableview")
-            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: Cell.self)) {
-                index, item, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: Cell.self)) { index, item, cell in
                 
                 cell.title.setTitle(item.menu.item, for: .normal)
                 cell.price.text = item.menu.price.currencyKR()
@@ -77,7 +76,7 @@ class ViewController: UIViewController {
                     changedMenu[index] = (item.menu, count)
                     self.menuItems.accept(changedMenu)
                 }
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
         
         // 총 구매한 아이템 갯수 itemCountLabel
         menuItems
@@ -133,14 +132,14 @@ class ViewController: UIViewController {
                     throw NSError(domain: "Decoding error", code: -1, userInfo: nil)
                 }
                 return response.menus.map { ($0, 0) }
-            }
-            .observeOn(MainScheduler.instance)
-            .do(onError: { [weak self] error in
-                self?.showAlert("Fetch Fail", error.localizedDescription)
-                }, onDispose: { [weak self] in
-                    self?.indicator.isHidden = true
-                    self?.tableView.refreshControl?.endRefreshing()
-            })
+        }
+        .observeOn(MainScheduler.instance)
+        .do(onError: { [weak self] error in
+            self?.showAlert("Fetch Fail", error.localizedDescription)
+            }, onDispose: { [weak self] in
+                self?.indicator.isHidden = true
+                self?.tableView.refreshControl?.endRefreshing()
+        })
             .bind(to: menuItems)
             .disposed(by: disposeBag)
     }
