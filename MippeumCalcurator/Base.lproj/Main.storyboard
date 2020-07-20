@@ -281,22 +281,33 @@
                                                             <constraint firstAttribute="height" constant="20" id="xUP-xk-wYy"/>
                                                         </constraints>
                                                     </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5X-7c-l5a">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPz-dc-8qY">
                                                         <rect key="frame" x="0.0" y="76" width="374" height="50"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd7-qM-p1l">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0H-xY-UJK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="50"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="20" id="OkA-Qp-B2E"/>
+                                                                    <constraint firstAttribute="width" constant="20" id="8gc-DK-xuh"/>
                                                                 </constraints>
                                                             </view>
-                                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="111" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-n7-fiQ">
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="F5X-7c-l5a">
                                                                 <rect key="frame" x="20" y="0.0" width="354" height="50"/>
-                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="21"/>
-                                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                            </textView>
+                                                                <subviews>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="111" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-n7-fiQ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="21"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
+                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="111" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-2I-rvW">
+                                                                        <rect key="frame" x="177" y="0.0" width="177" height="50"/>
+                                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="21"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                                    </textView>
+                                                                </subviews>
+                                                            </stackView>
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-zy-uVC">
@@ -380,7 +391,8 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
-                        <outlet property="orderList" destination="Ops-n7-fiQ" id="sbS-J6-JLd"/>
+                        <outlet property="orderListEachCount" destination="Ops-n7-fiQ" id="mko-I1-tqf"/>
+                        <outlet property="orderListEachSum" destination="KdE-2I-rvW" id="6fv-0q-N4l"/>
                         <outlet property="totalPrice" destination="Bed-3Q-Kzr" id="PaW-E7-nwa"/>
                     </connections>
                 </viewController>

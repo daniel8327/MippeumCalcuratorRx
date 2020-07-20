@@ -18,7 +18,7 @@
     Disable scrolling in Storyboard.
     Doing so allowed autolayout to kick in and dynamically size the textView based on its content.
     ==============================================================================
-    orderList 의 height를 선언하지 않고 상, 하, 좌, 우 만 컨스트레인츠를 잡고 하부는 잡지 않는다.
+    orderListEachCount 의 height를 선언하지 않고 상, 하, 좌, 우 만 컨스트레인츠를 잡고 하부는 잡지 않는다.
     Scrolling Enabled 를 끄면 자동으로 높이가 잡힌다. Eureka!
  
  2. ScrollView 셋팅
@@ -85,11 +85,18 @@ class OrderViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // 주문 상세 내역 orderList
+        // 주문 상세 내역 orderListEachCount
         orderedMenuItems
-            .debug("orderList")
-            .map { $0.map { "\($0.menu.item) \($0.count.toDecimalFormat())개"}.joined(separator: "\n") }
-            .bind(to: orderList.rx.text)
+            .debug("orderListEachCount")
+            .map { $0.map { "\($0.menu.item) (\($0.count.toDecimalFormat()))"}.joined(separator: "\n") }
+            .bind(to: orderListEachCount.rx.text)
+            .disposed(by: disposeBag)
+        
+        // 주문 상세 내역  orderListEachSum
+        orderedMenuItems
+            .debug("orderListEachSum")
+            .map { $0.map { "\(($0.menu.price * $0.count).toDecimalFormat())"}.joined(separator: "\n") }
+            .bind(to: orderListEachSum.rx.text)
             .disposed(by: disposeBag)
         
         // 총액 totalPrice
@@ -109,6 +116,7 @@ class OrderViewController: UIViewController {
     
     // MARK: - Interface Builder
     
-    @IBOutlet weak var orderList: UITextView!
+    @IBOutlet weak var orderListEachCount: UITextView!
+    @IBOutlet weak var orderListEachSum: UITextView!
     @IBOutlet weak var totalPrice: UILabel!
 }
