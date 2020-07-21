@@ -1,6 +1,0 @@
-framework module Pods_MippeumCalcurator_MippeumCalcuratorUITests {
-  umbrella header "Pods-MippeumCalcurator-MippeumCalcuratorUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
