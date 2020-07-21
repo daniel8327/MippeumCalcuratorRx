@@ -1,6 +1,0 @@
-framework module Pods_MippeumCalcuratorTests {
-  umbrella header "Pods-MippeumCalcuratorTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
