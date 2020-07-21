@@ -1,0 +1,42 @@
+//
+//  DBProducts.swift
+//  MippeumCalcuratorRx
+//
+//  Created by 장태현 on 2020/07/21.
+//  Copyright © 2020 장태현. All rights reserved.
+//
+
+import Foundation
+import RealmSwift
+
+class DBProducts : Object {
+    
+    @objc dynamic var product_id: String
+    @objc dynamic var product_price : Int64
+    @objc dynamic var ordering: Int64
+    
+    convenience init(product_id: String, product_price: Int64, ordering: Int64) {
+        self.init()
+        self.product_id = product_id
+        self.product_price = product_price
+        self.ordering = ordering
+    }
+    
+    required init() {
+        self.product_id = ""
+        self.product_price = 0
+        self.ordering = 0
+        super.init()
+    }
+    
+    // Primary Key 는 String, Int만 가능
+    override static func primaryKey() -> String? {
+        return "product_id"
+    }
+}
+
+extension DBProducts {
+    static func fromFirebase(product_id: String, product_price: Int64, ordering: Int64) -> DBProducts {
+        return DBProducts(product_id: product_id, product_price: product_price, ordering: ordering)
+    }
+}
