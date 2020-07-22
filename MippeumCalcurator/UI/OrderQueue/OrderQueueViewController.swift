@@ -168,6 +168,8 @@ class OrderQueueViewController: UIViewController {
         
         listItems.accept(orderQueues)
         totalSum$.accept(totalSum)
+
+        self.tableView.refreshControl?.endRefreshing()
     }
     
     // MARK: - Interface Builder

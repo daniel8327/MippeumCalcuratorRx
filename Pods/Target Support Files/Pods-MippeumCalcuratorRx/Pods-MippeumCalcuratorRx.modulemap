@@ -1,6 +1,0 @@
-framework module Pods_MippeumCalcuratorRx {
-  umbrella header "Pods-MippeumCalcuratorRx-umbrella.h"
-
-  export *
-  module * { export * }
-}

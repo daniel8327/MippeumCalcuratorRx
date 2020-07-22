@@ -216,6 +216,8 @@ class ViewController: UIViewController {
             
             menuItems.accept(changedMenu)
             
+            self.tableView.refreshControl?.endRefreshing()
+            
             indicator.isHidden = true
             
         } else {
