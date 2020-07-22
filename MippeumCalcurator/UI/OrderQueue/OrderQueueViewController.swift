@@ -79,8 +79,8 @@ class OrderQueueViewController: UIViewController {
                 
                 realm.beginWrite()
                 
-                data.enumerated().forEach { (_, element) in
-                    element.isDone = true
+                data.enumerated().forEach { (_, item) in
+                    item.isDone = true
                 }
                 
                 realm.add(data, update: .modified)
@@ -129,14 +129,14 @@ class OrderQueueViewController: UIViewController {
         var orderQueues: [OrderQueueModel] = []
         var totalSum = 0
         
-        dbOrders.enumerated().forEach { (_, element) in
+        dbOrders.enumerated().forEach { (_, item) in
             
-            totalSum += Int(element.totalPrice)
+            totalSum += Int(item.totalPrice)
             
-            if !element.isDone {
+            if !item.isDone {
                 orderQueues.append(OrderQueueModel(
-                    orderedDate: element.orderedDateKey
-                    ,orderedList: "\(element.orderedList.map { "\($0.productId)(\($0.productQty))"}.joined(separator: ", "))"))
+                    orderedDate: item.orderedDateKey
+                    ,orderedList: "\(item.orderedList.map { "\($0.productId)(\($0.productQty))"}.joined(separator: ", "))"))
             }
             
             //print("주문시간: \(element.order_date_key) 주문 내용 : \(element.order_list.map { "\($0.product_id)(\($0.product_qty))"}.joined(separator: ", "))")

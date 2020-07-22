@@ -15,10 +15,10 @@ class DBProducts : Object {
     @objc dynamic var productPrice : Int64
     @objc dynamic var ordering: Int64
     
-    convenience init(product_id: String, product_price: Int64, ordering: Int64) {
+    convenience init(productId: String, productPrice: Int64, ordering: Int64) {
         self.init()
-        self.productId = product_id
-        self.productPrice = product_price
+        self.productId = productId
+        self.productPrice = productPrice
         self.ordering = ordering
     }
     
@@ -36,7 +36,7 @@ class DBProducts : Object {
 }
 
 extension DBProducts {
-    static func fromFirebase(product_id: String, product_price: Int64, ordering: Int64) -> DBProducts {
-        return DBProducts(product_id: product_id, product_price: product_price, ordering: ordering)
+    static func fromFirebase(productId: String, productPrice: Int64, ordering: Int64) -> DBProducts {
+        return DBProducts(productId: productId, productPrice: productPrice, ordering: ordering)
     }
 }

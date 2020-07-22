@@ -208,9 +208,12 @@ class MenuViewController: UIViewController {
             
             let products = realm.objects(DBProducts.self).sorted(byKeyPath: "ordering")
             
-            _ = products.enumerated().map {
-                changedMenu.append((menu: MenuItem(item: $0.element.productId, price: Int($0.element.productPrice)), count: 0))
+            products.forEach { item in
+                changedMenu.append((menu: MenuItem(item: item.productId, price: Int(item.productPrice)), count: 0))
             }
+//            _ = products.enumerated().map {
+//                changedMenu.append((menu: MenuItem(item: $0.element.productId, price: Int($0.element.productPrice)), count: 0))
+//            }
             
             menuItems.accept(changedMenu)
             
@@ -233,12 +236,19 @@ class MenuViewController: UIViewController {
             .observeOn(MainScheduler.instance)
                 
             .do(onNext: { data in
-                _ = data.enumerated().map {
+                
+                data.enumerated().forEach({ (index, item) in
                     
                     realm.beginWrite()
-                    realm.add(DBProducts(product_id: $0.element.menu.item, product_price: Int64($0.element.menu.price), ordering: Int64($0.offset)), update: .all)
+                    realm.add(DBProducts(productId: item.menu.item, productPrice: Int64(item.menu.price), ordering: Int64(index)), update: .all)
                     try? realm.commitWrite()
-                }
+                })
+//                _ = data.enumerated().map {
+//
+//                    realm.beginWrite()
+//                    realm.add(DBProducts(product_id: $0.element.menu.item, product_price: Int64($0.element.menu.price), ordering: Int64($0.offset)), update: .all)
+//                    try? realm.commitWrite()
+//                }
             }, onError: { [weak self] error in
                 self?.showAlert("Fetch Fail", error.localizedDescription)
                 

@@ -9,6 +9,8 @@ target 'MippeumCalcuratorRx' do
   pod 'RxOptional'
   pod 'RxViewController'
   pod 'RealmSwift'
+  pod 'Charts' 
+#  pod 'ChartsRealm'
 
   # Pods for MippeumCalcuratorRx
 

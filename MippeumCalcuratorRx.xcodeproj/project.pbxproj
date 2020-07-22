@@ -30,6 +30,7 @@
 		64FB3AF324C7107400AF2A20 /* OrderQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3AF224C7107400AF2A20 /* OrderQueueViewController.swift */; };
 		64FB3AF624C7267A00AF2A20 /* OrderQueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3AF524C7267A00AF2A20 /* OrderQueueModel.swift */; };
 		64FB3AF824C72B2700AF2A20 /* OrderQueueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3AF724C72B2700AF2A20 /* OrderQueueCell.swift */; };
+		64FB3AFB24C86DEE00AF2A20 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3AFA24C86DEE00AF2A20 /* StatisticsViewController.swift */; };
 		E3EF943625FEFAAA5F9937BF /* Pods_MippeumCalcuratorRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B4F40BA6CB4B92D9152CB /* Pods_MippeumCalcuratorRx.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,7 @@
 		64FB3AF224C7107400AF2A20 /* OrderQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueViewController.swift; sourceTree = "<group>"; };
 		64FB3AF524C7267A00AF2A20 /* OrderQueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueModel.swift; sourceTree = "<group>"; };
 		64FB3AF724C72B2700AF2A20 /* OrderQueueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueCell.swift; sourceTree = "<group>"; };
+		64FB3AFA24C86DEE00AF2A20 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		6C940524D69CC177FF15AFA4 /* Pods-MippeumCalcuratorRx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx.release.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx/Pods-MippeumCalcuratorRx.release.xcconfig"; sourceTree = "<group>"; };
 		7E273CDB2412EBE6DE0F9C30 /* Pods-MippeumCalcuratorRx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx/Pods-MippeumCalcuratorRx.debug.xcconfig"; sourceTree = "<group>"; };
 		8284D38A9D14393E3F4FE093 /* Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests/Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 		64DFF4DD24C5EA8000FF3976 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				64FB3AF924C86CF000AF2A20 /* Statistics */,
 				64DFF4D724C5E9DF00FF3976 /* Menu */,
 				64FB3AF124C7105100AF2A20 /* OrderQueue */,
 				64DFF4D824C5E9DF00FF3976 /* Reciept */,
@@ -291,6 +294,14 @@
 				64FB3AF524C7267A00AF2A20 /* OrderQueueModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		64FB3AF924C86CF000AF2A20 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				64FB3AFA24C86DEE00AF2A20 /* StatisticsViewController.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		7714FD15DEAE76ABF4F0E2FD /* Frameworks */ = {
@@ -549,6 +560,7 @@
 				64DFF49524C4BA6900FF3976 /* AppDelegate.swift in Sources */,
 				64DFF4CC24C4BAF000FF3976 /* Model.swift in Sources */,
 				64DFF4CD24C4BAF000FF3976 /* Util.swift in Sources */,
+				64FB3AFB24C86DEE00AF2A20 /* StatisticsViewController.swift in Sources */,
 				64331C7024C679A1008EFAAA /* DBProducts.swift in Sources */,
 				64331C6E24C67943008EFAAA /* DBOrderList.swift in Sources */,
 				64331C6624C673FA008EFAAA /* DBOrder.swift in Sources */,
