@@ -15,7 +15,7 @@
 		64331C7224C67AEF008EFAAA /* RealmCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64331C7124C67AEE008EFAAA /* RealmCenter.swift */; };
 		64DFF49524C4BA6900FF3976 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49424C4BA6900FF3976 /* AppDelegate.swift */; };
 		64DFF49724C4BA6900FF3976 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */; };
-		64DFF49924C4BA6900FF3976 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49824C4BA6900FF3976 /* ViewController.swift */; };
+		64DFF49924C4BA6900FF3976 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49824C4BA6900FF3976 /* MenuViewController.swift */; };
 		64DFF49C24C4BA6900FF3976 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64DFF49A24C4BA6900FF3976 /* Main.storyboard */; };
 		64DFF49F24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF49D24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld */; };
 		64DFF4A124C4BA6C00FF3976 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */; };
@@ -25,7 +25,7 @@
 		64DFF4CB24C4BAF000FF3976 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C724C4BAF000FF3976 /* APIService.swift */; };
 		64DFF4CC24C4BAF000FF3976 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C824C4BAF000FF3976 /* Model.swift */; };
 		64DFF4CD24C4BAF000FF3976 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C924C4BAF000FF3976 /* Util.swift */; };
-		64DFF4CE24C4BAF000FF3976 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4CA24C4BAF000FF3976 /* Cell.swift */; };
+		64DFF4CE24C4BAF000FF3976 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4CA24C4BAF000FF3976 /* MenuCell.swift */; };
 		64DFF4D124C5665700FF3976 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4D024C5665700FF3976 /* ReceiptViewController.swift */; };
 		64FB3AF324C7107400AF2A20 /* OrderQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3AF224C7107400AF2A20 /* OrderQueueViewController.swift */; };
 		64FB3AF624C7267A00AF2A20 /* OrderQueueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3AF524C7267A00AF2A20 /* OrderQueueModel.swift */; };
@@ -59,7 +59,7 @@
 		64DFF49124C4BA6900FF3976 /* MippeumCalcuratorRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MippeumCalcuratorRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DFF49424C4BA6900FF3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		64DFF49824C4BA6900FF3976 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		64DFF49824C4BA6900FF3976 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		64DFF49B24C4BA6900FF3976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64DFF49E24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MippeumCalcurator.xcdatamodel; sourceTree = "<group>"; };
 		64DFF4A024C4BA6C00FF3976 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		64DFF4C724C4BAF000FF3976 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		64DFF4C824C4BAF000FF3976 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		64DFF4C924C4BAF000FF3976 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		64DFF4CA24C4BAF000FF3976 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		64DFF4CA24C4BAF000FF3976 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		64DFF4D024C5665700FF3976 /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		64FB3AF224C7107400AF2A20 /* OrderQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueViewController.swift; sourceTree = "<group>"; };
 		64FB3AF524C7267A00AF2A20 /* OrderQueueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueModel.swift; sourceTree = "<group>"; };
@@ -243,8 +243,8 @@
 		64DFF4D724C5E9DF00FF3976 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				64DFF49824C4BA6900FF3976 /* ViewController.swift */,
-				64DFF4CA24C4BAF000FF3976 /* Cell.swift */,
+				64DFF49824C4BA6900FF3976 /* MenuViewController.swift */,
+				64DFF4CA24C4BAF000FF3976 /* MenuCell.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -543,7 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64FB3AF824C72B2700AF2A20 /* OrderQueueCell.swift in Sources */,
-				64DFF49924C4BA6900FF3976 /* ViewController.swift in Sources */,
+				64DFF49924C4BA6900FF3976 /* MenuViewController.swift in Sources */,
 				64FB3AF624C7267A00AF2A20 /* OrderQueueModel.swift in Sources */,
 				64DFF4CB24C4BAF000FF3976 /* APIService.swift in Sources */,
 				64DFF49524C4BA6900FF3976 /* AppDelegate.swift in Sources */,
@@ -552,7 +552,7 @@
 				64331C7024C679A1008EFAAA /* DBProducts.swift in Sources */,
 				64331C6E24C67943008EFAAA /* DBOrderList.swift in Sources */,
 				64331C6624C673FA008EFAAA /* DBOrder.swift in Sources */,
-				64DFF4CE24C4BAF000FF3976 /* Cell.swift in Sources */,
+				64DFF4CE24C4BAF000FF3976 /* MenuCell.swift in Sources */,
 				64DFF49724C4BA6900FF3976 /* SceneDelegate.swift in Sources */,
 				64331C7224C67AEF008EFAAA /* RealmCenter.swift in Sources */,
 				64FB3AF324C7107400AF2A20 /* OrderQueueViewController.swift in Sources */,

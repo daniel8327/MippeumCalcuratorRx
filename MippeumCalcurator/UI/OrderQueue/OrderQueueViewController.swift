@@ -26,22 +26,6 @@ class OrderQueueViewController: UIViewController {
     
     func setBinding() {
 
-//        rx.viewWillAppear
-//        .debug("viewWillAppear")
-//            .take(1)
-//            .subscribe(onNext: {[weak navigationController] _ in
-//                navigationController?.isNavigationBarHidden = false
-//            })
-//            .disposed(by: disposeBag)
-
-//        rx.viewWillDisappear
-//        .debug("viewWillDisappear")
-//            .take(1)
-//            .subscribe(onNext: {[weak self] _ in
-//                self?.navigationController?.isNavigationBarHidden = true
-//            })
-//            .disposed(by: disposeBag)
-        
         // 두개 합치기
         Observable.merge(
             [rx.viewWillAppear.map{ _ in false }
@@ -53,7 +37,6 @@ class OrderQueueViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        
         // 당겨서 새로고침
         let refreshControl = UIRefreshControl()
         refreshControl.rx.controlEvent(.valueChanged)
@@ -61,7 +44,7 @@ class OrderQueueViewController: UIViewController {
             .disposed(by: disposeBag)
         tableView.refreshControl = refreshControl
         
-        
+        // tableView 셋팅
         listItems
         .debug("tableView")
             .bind(to: tableView.rx.items(cellIdentifier: "OrderQueueCell", cellType: OrderQueueCell.self)) { (index, item, cell) in
@@ -71,18 +54,13 @@ class OrderQueueViewController: UIViewController {
                 dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:sssZ"
                 dateFormatter.timeZone = NSTimeZone(name: "KR") as TimeZone?
 
-                let date:Date = dateFormatter.date(from: item.date_key)!
-                
-                
-                print(date)
+                let date:Date = dateFormatter.date(from: item.orderedDate)!
                 
                 dateFormatter.dateFormat = "HH:mm:ss"
-                let date_Str = dateFormatter.string(from: date)
-                print(date_Str)
+                let dateStr = dateFormatter.string(from: date)
                 
-                
-                cell.orderDateLabel.text = date_Str
-                cell.orderListLabel.text = item.order_list
+                cell.orderDateLabel.text = dateStr
+                cell.orderListLabel.text = item.orderedList
                 
         }.disposed(by: disposeBag)
         
@@ -97,7 +75,7 @@ class OrderQueueViewController: UIViewController {
                 var newList = self.listItems.value
                 
                 let realm = RealmCenter.INSTANCE.getRealm()
-                let data = realm.objects(DBOrder.self).filter("order_date_key == %@", newList[indexPath.row].date_key)
+                let data = realm.objects(DBOrder.self).filter("orderedDateKey == %@", newList[indexPath.row].orderedDate)
                 
                 realm.beginWrite()
                 
@@ -106,19 +84,20 @@ class OrderQueueViewController: UIViewController {
                 }
                 
                 realm.add(data, update: .modified)
-                try? realm.commitWrite()
                 
-                newList.remove(at: indexPath.row)
-                self.listItems.accept(newList)
+                do {
+                    try realm.commitWrite()
+
+                    newList.remove(at: indexPath.row)
+                    self.listItems.accept(newList)
                     
-                
-                
-            //objects.remove(at: indexPath.row)
-                
-                //self?.tableView.deleteRows(at: [indexPath], with: .fade)
+                } catch let error {
+                    print("tableView Row Delete failed .. \(error.localizedDescription)")
+                }
         })
         .disposed(by: disposeBag)
         
+        // 오늘의 총 매출
         totalSum$
             .map { $0.currencyKR() }
             .bind(to: totalSumLabel.rx.text)
@@ -129,24 +108,22 @@ class OrderQueueViewController: UIViewController {
     // MARK: - Business Logic
     
     var listItems: BehaviorRelay<[OrderQueueModel]> = BehaviorRelay(value: [])
-    
     var totalSum$: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    
     var disposeBag: DisposeBag = DisposeBag()
     
     func fetch() {
         
-        let fr_date = Date().startTime()
-        let to_date = Date().endTime()
-        
-        //print(fr_date)
-        //print(to_date)
+        let frDate = Date().startTime()
+        let toDate = Date().endTime()
         
         let realm = RealmCenter.INSTANCE.getRealm()
+        
         let dbOrders = realm.objects(DBOrder.self)
-            .filter("order_date >= %@", fr_date)
-            .filter("order_date <= %@", to_date)
-//            .filter("isDone == false")
-            .sorted(byKeyPath: "order_date", ascending: false)
+            .filter("orderedDate >= %@", frDate)
+            .filter("orderedDate <= %@", toDate)
+//            .filter("isDone == false") 총 매출을 계산해야하므로 제작완료도 포함해야한다.
+            .sorted(byKeyPath: "orderedDate", ascending: false)
         
         
         var orderQueues: [OrderQueueModel] = []
@@ -154,12 +131,12 @@ class OrderQueueViewController: UIViewController {
         
         dbOrders.enumerated().forEach { (_, element) in
             
-            totalSum += Int(element.order_price)
+            totalSum += Int(element.totalPrice)
             
             if !element.isDone {
                 orderQueues.append(OrderQueueModel(
-                    date_key: element.order_date_key
-                    ,order_list: "\(element.order_list.map { "\($0.product_id)(\($0.product_qty))"}.joined(separator: ", "))"))
+                    orderedDate: element.orderedDateKey
+                    ,orderedList: "\(element.orderedList.map { "\($0.productId)(\($0.productQty))"}.joined(separator: ", "))"))
             }
             
             //print("주문시간: \(element.order_date_key) 주문 내용 : \(element.order_list.map { "\($0.product_id)(\($0.product_qty))"}.joined(separator: ", "))")

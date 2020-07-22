@@ -11,7 +11,7 @@ import RxSwift
 import RxViewController
 import UIKit
 
-class ViewController: UIViewController {
+class MenuViewController: UIViewController {
     
     // MARK: - Life Cycle
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         rx.viewWillAppear
             .debug("viewWillAppear")
             .map { _ in true}
-            //.take(1)
+            .take(1)
             .subscribe(onNext: { [weak navigationController] _ in
                 navigationController?.isNavigationBarHidden = true
             })
@@ -211,7 +211,7 @@ class ViewController: UIViewController {
             let products = realm.objects(DBProducts.self).sorted(byKeyPath: "ordering")
             
             _ = products.enumerated().map {
-                changedMenu.append((menu: MenuItem(item: $0.element.product_id, price: Int($0.element.product_price)), count: 0))
+                changedMenu.append((menu: MenuItem(item: $0.element.productId, price: Int($0.element.productPrice)), count: 0))
             }
             
             menuItems.accept(changedMenu)

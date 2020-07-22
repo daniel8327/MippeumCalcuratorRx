@@ -11,27 +11,27 @@ import RealmSwift
 
 class DBProducts : Object {
     
-    @objc dynamic var product_id: String
-    @objc dynamic var product_price : Int64
+    @objc dynamic var productId: String
+    @objc dynamic var productPrice : Int64
     @objc dynamic var ordering: Int64
     
     convenience init(product_id: String, product_price: Int64, ordering: Int64) {
         self.init()
-        self.product_id = product_id
-        self.product_price = product_price
+        self.productId = product_id
+        self.productPrice = product_price
         self.ordering = ordering
     }
     
     required init() {
-        self.product_id = ""
-        self.product_price = 0
+        self.productId = ""
+        self.productPrice = 0
         self.ordering = 0
         super.init()
     }
     
     // Primary Key 는 String, Int만 가능
     override static func primaryKey() -> String? {
-        return "product_id"
+        return "productId"
     }
 }
 

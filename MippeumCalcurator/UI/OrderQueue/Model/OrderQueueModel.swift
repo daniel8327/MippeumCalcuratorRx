@@ -8,6 +8,6 @@
 
 import Foundation
 struct OrderQueueModel {
-    var date_key: String
-    var order_list: String
+    var orderedDate: String
+    var orderedList: String
 }

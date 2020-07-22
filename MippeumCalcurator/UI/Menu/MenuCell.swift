@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class Cell: UITableViewCell {
+class MenuCell: UITableViewCell {
 
     // MARK: - Life Cycle
     
