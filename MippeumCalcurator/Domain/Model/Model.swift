@@ -11,4 +11,10 @@ import Foundation
 class MenuItem: Decodable {
     var item: String
     var price: Int
+    
+    
+    init(item: String, price:Int) {
+        self.item = item
+        self.price = price
+    }
 }

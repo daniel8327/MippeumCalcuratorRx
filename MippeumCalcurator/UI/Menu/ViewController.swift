@@ -25,8 +25,10 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let id = segue.identifier ?? ""
-        if id == "OrderViewController", let targetVC = segue.destination as? OrderViewController {
+        if id == "ReceiptViewController", let targetVC = segue.destination as? ReceiptViewController {
             targetVC.orderedMenuItems.accept(menuItems.value.filter { $0.count > 0 })
+        } else if  id == "OrderQueueViewController", let targetVC = segue.description as? OrderQueueViewController {
+            //targetVC.
         }
     }
     
@@ -42,7 +44,7 @@ class ViewController: UIViewController {
                 navigationController?.isNavigationBarHidden = true
             })
             .disposed(by: disposeBag)
-
+        
         // 당겨서 새로고침
         let refreshControl = UIRefreshControl()
         refreshControl.rx.controlEvent(.valueChanged)
@@ -82,7 +84,7 @@ class ViewController: UIViewController {
                     changedMenu[index] = (item.menu, count)
                     self.menuItems.accept(changedMenu)
                 }
-            }.disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
         
         // 총 구매한 아이템 갯수 itemCountLabel
         menuItems
@@ -100,6 +102,44 @@ class ViewController: UIViewController {
             .bind(to: totalPriceLabel.rx.text)
             .disposed(by: disposeBag)
         
+        
+        
+        //        orderButton.rx.tap
+        //            .debug("orderButton")
+        //            .withLatestFrom(menuItems)
+        //            .map { $0.map { $0.count }.reduce(0, +)} // 갯수 체크
+        //            .do(onNext: { [weak self] allCount in
+        //                if allCount <= 0 { self?.showAlert("주문 실패", "주문해주세요") }
+        //            })
+        //            .filter { $0 > 0 }
+        //            .map { _ in "OrderViewController" }
+        //            .subscribe(onNext: { [weak self] identifier in
+        //                self?.performSegue(withIdentifier: identifier, sender: nil)
+        //            })
+        //            .disposed(by: disposeBag)
+        
+        // 주문내역 orderHistory
+        orderHistory.rx.tap
+            .debug("orderHistory")
+            .withLatestFrom(menuItems)
+            .map { $0.map { $0.count }.reduce(0, +)} // 갯수 체크
+            .do(onNext: { [weak self] allCount in
+                if allCount > 0 {
+                    do {
+                        try self?.saveRealm()
+                    } catch let err {
+                        print("error occur \(err)")
+                        return
+                    }
+                }
+            })
+            .map { _ in "OrderQueueViewController" }
+            .subscribe(onNext: { [weak self] identifier in
+                self?.performSegue(withIdentifier: identifier, sender: nil)
+            })
+            .disposed(by: disposeBag)
+            
+        
         // 주문 orderButton
         orderButton.rx.tap
             .debug("orderButton")
@@ -109,8 +149,39 @@ class ViewController: UIViewController {
                 if allCount <= 0 { self?.showAlert("주문 실패", "주문해주세요") }
             })
             .filter { $0 > 0 }
-            .map { _ in "OrderViewController" }
+            .map { _ in "OrderQueueViewController" }
             .subscribe(onNext: { [weak self] identifier in
+
+                do {
+                    try self?.saveRealm()
+                } catch let err {
+                    print("error occur \(err)")
+                    return
+                }
+                // 주문완료시 초기화
+                self?.clearButton.sendActions(for: .touchUpInside)
+            })
+            .disposed(by: disposeBag)
+
+        // 영수증보기 orderReceipt
+        orderReceipt.rx.tap
+            .debug("orderReceipt")
+            .withLatestFrom(menuItems)
+            .map { $0.map { $0.count }.reduce(0, +)} // 갯수 체크
+            .do(onNext: { [weak self] allCount in
+                if allCount <= 0 { self?.showAlert("주문 실패", "주문해주세요") }
+            })
+            .filter { $0 > 0 }
+            .map { _ in "ReceiptViewController" }
+            .subscribe(onNext: { [weak self] identifier in
+
+                do {
+                    try self?.saveRealm()
+
+                } catch let err {
+                    print("error occur \(err)")
+                    return
+                }
                 self?.performSegue(withIdentifier: identifier, sender: nil)
             })
             .disposed(by: disposeBag)
@@ -128,26 +199,95 @@ class ViewController: UIViewController {
     var disposeBag: DisposeBag = DisposeBag()
     
     func fetch() {
+        
         indicator.isHidden = false
-        APIService.fetchAllMenusRx()
-            .map { data in
-                struct Response: Decodable {
-                    let menus: [MenuItem]
+        
+        let realm = RealmCenter.INSTANCE.getRealm()
+        
+        if let _ = realm.objects(DBProducts.self).first {
+            
+            var changedMenu: [(menu: MenuItem, count: Int)] = []
+            
+            let products = realm.objects(DBProducts.self).sorted(byKeyPath: "ordering")
+            
+            _ = products.enumerated().map {
+                changedMenu.append((menu: MenuItem(item: $0.element.product_id, price: Int($0.element.product_price)), count: 0))
+            }
+            
+            menuItems.accept(changedMenu)
+            
+            indicator.isHidden = true
+            
+        } else {
+            
+            APIService.fetchAllMenusRx()
+                .map { data in
+                    struct Response: Decodable {
+                        let menus: [MenuItem]
+                    }
+                    guard let response = try? JSONDecoder().decode(Response.self, from: data) else {
+                        throw NSError(domain: "Decoding error", code: -1, userInfo: nil)
+                    }
+                    return response.menus.map { ($0, 0) }
+            }
+            .observeOn(MainScheduler.instance)
+                
+            .do(onNext: { data in
+                _ = data.enumerated().map {
+                    
+                    realm.beginWrite()
+                    realm.add(DBProducts(product_id: $0.element.menu.item, product_price: Int64($0.element.menu.price), ordering: Int64($0.offset)), update: .all)
+                    try? realm.commitWrite()
                 }
-                guard let response = try? JSONDecoder().decode(Response.self, from: data) else {
-                    throw NSError(domain: "Decoding error", code: -1, userInfo: nil)
-                }
-                return response.menus.map { ($0, 0) }
+            }, onError: { [weak self] error in
+                self?.showAlert("Fetch Fail", error.localizedDescription)
+                
+                }, onDispose: { [weak self] in
+                    self?.indicator.isHidden = true
+                    self?.tableView.refreshControl?.endRefreshing()
+            })
+                .bind(to: menuItems)
+                .disposed(by: disposeBag)
         }
-        .observeOn(MainScheduler.instance)
-        .do(onError: { [weak self] error in
-            self?.showAlert("Fetch Fail", error.localizedDescription)
-            }, onDispose: { [weak self] in
-                self?.indicator.isHidden = true
-                self?.tableView.refreshControl?.endRefreshing()
-        })
-            .bind(to: menuItems)
-            .disposed(by: disposeBag)
+    }
+    
+    func saveRealm() throws {
+        func menuItemToDBOrder(list: [(menu: MenuItem, count: Int)]) -> (DBOrder, [DBOrderList]) {
+            
+            var array = [DBOrderList]()
+            let date = Date()
+            let order_date_key = date.description
+            
+            // total sum 구하기
+            let totalSum = list.map {
+                $0.menu.price * $0.count
+            }.reduce(0, +)
+            
+            let dbOrder = DBOrder(order_date_key: order_date_key, order_date: date, order_price: Int64(totalSum), isDone: false)
+            
+            _ = list.map {
+                array.append(DBOrderList(dbOrder: dbOrder, product_id: $0.menu.item, product_qty: Int64($0.count)))
+            }
+            
+            return (dbOrder, array)
+        }
+        
+        let realm = RealmCenter.INSTANCE.getRealm()
+        realm.beginWrite()
+        
+        do {
+            let (dbOrder, dbOrderList) = menuItemToDBOrder(list: menuItems.value.filter { $0.count > 0 })
+            
+            realm.add(dbOrder)
+            realm.add(dbOrderList)
+            try realm.commitWrite()
+        } catch let error {
+            
+            if realm.isInWriteTransaction {
+                realm.cancelWrite()
+            }
+            throw error
+        }
     }
     
     // MARK: - InterfaceBuilder Links
@@ -157,4 +297,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var orderButton: UIButton!
+    @IBOutlet weak var orderHistory: UIButton!
+    @IBOutlet weak var orderReceipt: UIButton!
 }
