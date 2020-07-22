@@ -71,7 +71,7 @@ class MenuViewController: UIViewController {
         // tableView bind
         menuItems
             .debug("tableview")
-            .bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: Cell.self)) { index, item, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "MenuCell", cellType: MenuCell.self)) { index, item, cell in
                 
                 cell.title.setTitle(item.menu.item, for: .normal)
                 cell.price.text = item.menu.price.currencyKR()
@@ -86,13 +86,23 @@ class MenuViewController: UIViewController {
                 }
         }.disposed(by: disposeBag)
         
-        // 총 구매한 아이템 갯수 itemCountLabel
-        menuItems
-            .debug("itemCountLabel")
+        let orderedCount = menuItems
             .map { $0.map { $0.count }.reduce(0, +) }
+            .asObservable()
+        
+        // 총 구매한 아이템 갯수 itemCountLabel 방법 1
+        orderedCount
             .map { "\($0)" }
             .bind(to: itemCountLabel.rx.text)
             .disposed(by: disposeBag)
+        
+//        // 총 구매한 아이템 갯수 itemCountLabel 방법 2
+//        menuItems
+//            .debug("itemCountLabel")
+//            .map { $0.map { $0.count }.reduce(0, +) }
+//            .map { "\($0)" }
+//            .bind(to: itemCountLabel.rx.text)
+//            .disposed(by: disposeBag)
         
         // 최종 구매액 totalPriceLabel
         menuItems
@@ -102,21 +112,7 @@ class MenuViewController: UIViewController {
             .bind(to: totalPriceLabel.rx.text)
             .disposed(by: disposeBag)
         
-        
-        
-        //        orderButton.rx.tap
-        //            .debug("orderButton")
-        //            .withLatestFrom(menuItems)
-        //            .map { $0.map { $0.count }.reduce(0, +)} // 갯수 체크
-        //            .do(onNext: { [weak self] allCount in
-        //                if allCount <= 0 { self?.showAlert("주문 실패", "주문해주세요") }
-        //            })
-        //            .filter { $0 > 0 }
-        //            .map { _ in "OrderViewController" }
-        //            .subscribe(onNext: { [weak self] identifier in
-        //                self?.performSegue(withIdentifier: identifier, sender: nil)
-        //            })
-        //            .disposed(by: disposeBag)
+        ///TODO  orderedCount 와 탭을 Operator를 써서 ($0 > 0, true) 일때 처리
         
         // 주문내역 orderHistory
         orderHistory.rx.tap
@@ -196,6 +192,8 @@ class MenuViewController: UIViewController {
     // MARK: - Business Logic
     
     let menuItems: BehaviorRelay<[(menu: MenuItem, count: Int)]> = BehaviorRelay(value: [])
+    let orderedCount: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    
     var disposeBag: DisposeBag = DisposeBag()
     
     func fetch() {
