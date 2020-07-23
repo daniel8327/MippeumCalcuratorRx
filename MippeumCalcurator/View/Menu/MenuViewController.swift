@@ -26,8 +26,18 @@ class MenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let identifier = segue.identifier ?? ""
-        if identifier == "ReceiptViewController", let targetVC = segue.destination as? ReceiptViewController {
-            targetVC.orderedMenuItems.accept(menuItems.value.filter { $0.count > 0 })
+        if identifier == ReceiptViewController.identifier,
+            let menus = sender as? [(menu: MenuItem, count: Int)],
+            let targetVC = segue.destination as? ReceiptViewController {
+            
+            var viewMenuItem = [ViewMenuItem]()
+            
+            _ = menus
+                .filter { $0.count > 0 }
+                .map {
+                viewMenuItem.append(ViewMenuItem(item: $0.menu.item, price: $0.menu.price, count: $0.count))
+            }
+            targetVC.viewModel = ReceiptViewModel(viewMenuItem)
         }
     }
     
@@ -130,7 +140,7 @@ class MenuViewController: UIViewController {
             })
             .map { _ in "OrderQueueViewController" }
             .subscribe(onNext: { [weak self] identifier in
-                self?.performSegue(withIdentifier: identifier, sender: nil)
+                self?.performSegue(withIdentifier: identifier, sender: self?.menuItems.value)
             })
             .disposed(by: disposeBag)
             
@@ -176,7 +186,7 @@ class MenuViewController: UIViewController {
                     print("error occur \(err)")
                     return
                 }
-                self?.performSegue(withIdentifier: identifier, sender: nil)
+                self?.performSegue(withIdentifier: identifier, sender: self?.menuItems.value)
             })
             .disposed(by: disposeBag)
     }

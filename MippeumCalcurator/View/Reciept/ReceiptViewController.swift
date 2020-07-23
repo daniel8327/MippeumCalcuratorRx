@@ -46,74 +46,56 @@ import RxSwift
 import RxCocoa
 
 class ReceiptViewController: UIViewController {
+    static let identifier = "ReceiptViewController"
+    
+    var viewModel: ReceiptViewModelType
+    var disposeBag = DisposeBag()
     
     // MARK: - Life Cycle
+
+    init(viewModel: ReceiptViewModelType = ReceiptViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        viewModel = ReceiptViewModel()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setBinding()
     }
     
-    // MARK: - UI Logic
+    // MARK: - UI Binding
      
     func setBinding() {
 
-        /*rx.viewWillAppear
-        .debug("viewWillAppear")
-            .take(1)
-            .subscribe(onNext: {[weak navigationController] _ in
-                navigationController?.isNavigationBarHidden = false
-            })
-            .disposed(by: disposeBag)
-
-        rx.viewWillDisappear
-        .debug("viewWillDisappear")
-            .take(1)
-            .subscribe(onNext: {[weak self] _ in
-                self?.navigationController?.isNavigationBarHidden = true
-            })
-            .disposed(by: disposeBag)*/
-        
-        // 두개 합치기
         Observable.merge(
-            [rx.viewWillAppear.map { _ in false }
-                ,rx.viewWillDisappear.map { _ in true }])
+            [rx.viewWillAppear.take(1).map { _ in false }
+                ,rx.viewWillDisappear.take(1).map { _ in true }])
             .debug("merge")
-            .map { $0 }
             .subscribe(onNext: { [weak navigationController] bool in
                 navigationController?.isNavigationBarHidden = bool
             })
             .disposed(by: disposeBag)
         
         // 주문 상세 내역 orderListEachCount
-        orderedMenuItems
-            .debug("orderListEachCount")
-            .map { $0.map { "\($0.menu.item) (\($0.count.toDecimalFormat()))"}.joined(separator: "\n") }
+        viewModel.orderListEachCount
             .bind(to: orderListEachCount.rx.text)
             .disposed(by: disposeBag)
         
         // 주문 상세 내역  orderListEachSum
-        orderedMenuItems
-            .debug("orderListEachSum")
-            .map { $0.map { "\(($0.menu.price * $0.count).toDecimalFormat())"}.joined(separator: "\n") }
+        viewModel.orderListEachSum
             .bind(to: orderListEachSum.rx.text)
             .disposed(by: disposeBag)
         
         // 총액 totalPrice
-        orderedMenuItems
-            .debug("totalPrice")
-            .map { $0.map { $0.menu.price * $0.count }.reduce(0, +) }
-            .map { $0.currencyKR() }
+        viewModel.totalPrice
             .bind(to: totalPrice.rx.text)
             .disposed(by: disposeBag)
     }
-    
-    // MARK: - Business Logic
-    
-    let orderedMenuItems: BehaviorRelay<[(menu: MenuItem, count: Int)]> = BehaviorRelay(value: [])
-    
-    var disposeBag = DisposeBag()
     
     // MARK: - Interface Builder
     
