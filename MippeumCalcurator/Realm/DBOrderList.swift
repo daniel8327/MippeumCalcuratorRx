@@ -21,10 +21,10 @@ class DBOrderList : Object {
         super.init()
     }
     
-    convenience init(dbOrder: DBOrder, product_id: String ,product_qty: Int64) {
+    convenience init(dbOrder: DBOrder, productId: String ,productQty: Int64) {
         self.init()
         self.dbOrder = dbOrder
-        self.productId = product_id
-        self.productQty = product_qty
+        self.productId = productId
+        self.productQty = productQty
     }
 }

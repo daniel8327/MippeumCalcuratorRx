@@ -76,8 +76,8 @@ class ReceiptViewController: UIViewController {
         
         // 두개 합치기
         Observable.merge(
-            [rx.viewWillAppear.map{ _ in false }
-                ,rx.viewWillDisappear.map{ _ in true }])
+            [rx.viewWillAppear.map { _ in false }
+                ,rx.viewWillDisappear.map { _ in true }])
             .debug("merge")
             .map { $0 }
             .subscribe(onNext: { [weak navigationController] bool in

@@ -30,8 +30,8 @@ class StatisticsViewController: UIViewController {
 
         // 두개 합치기
         Observable.merge(
-            [rx.viewWillAppear.map{ _ in false }
-                ,rx.viewWillDisappear.map{ _ in true }])
+            [rx.viewWillAppear.map { _ in false }
+                ,rx.viewWillDisappear.map { _ in true }])
             .debug("merge")
             .map { $0 }
             .subscribe(onNext: { [weak navigationController] bool in
@@ -40,7 +40,7 @@ class StatisticsViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // 오늘의 총 매출
-        totalSum$
+        totalPrice
             .map { $0.currencyKR() }
             .bind(to: totalSumLabel.rx.text)
             .disposed(by: disposeBag)
@@ -56,10 +56,9 @@ class StatisticsViewController: UIViewController {
     // MARK: - Business Logic
     
     var chartItems: BehaviorRelay<[String : Int64]> = BehaviorRelay(value: [:])
-    var totalSum$: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    var totalPrice: BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     var disposeBag: DisposeBag = DisposeBag()
-    
     
     /// 오늘의 매출 및 판매 항목을 조회한다.
     func fetch() {
@@ -76,7 +75,7 @@ class StatisticsViewController: UIViewController {
         
         let products = realm.objects(DBProducts.self)
         
-        var dict = Dictionary<String, Int64>()
+        var dict = [String:Int64]()
         
         products.forEach { (product) in
             dict.updateValue(0, forKey: product.productId)
@@ -94,7 +93,7 @@ class StatisticsViewController: UIViewController {
         }
         
         chartItems.accept(dict)
-        totalSum$.accept(totalSum)
+        totalPrice.accept(totalSum)
     }
     
     /// 챠트 설정
@@ -104,7 +103,7 @@ class StatisticsViewController: UIViewController {
         var dataEntry = [PieChartDataEntry]()
         
         chartItems
-            .map { $0.enumerated().forEach { (index, item) in
+            .map { $0.enumerated().forEach { (_, item) in
                 if item.value > 0 {
                     dataEntry.append(PieChartDataEntry(value: Double(item.value), label: item.key))
                 }

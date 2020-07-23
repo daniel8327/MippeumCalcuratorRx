@@ -13,7 +13,7 @@ import RxSwift
 class OrderQueueCell: UITableViewCell {
 
     // MARK: - Life Cycle
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

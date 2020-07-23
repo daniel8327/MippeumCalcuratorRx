@@ -28,8 +28,8 @@ class OrderQueueViewController: UIViewController {
 
         // 두개 합치기
         Observable.merge(
-            [rx.viewWillAppear.map{ _ in false }
-                ,rx.viewWillDisappear.map{ _ in true }])
+            [rx.viewWillAppear.map { _ in false }
+                ,rx.viewWillDisappear.map { _ in true }])
             .debug("merge")
             .map { $0 }
             .subscribe(onNext: { [weak navigationController] bool in
@@ -47,7 +47,7 @@ class OrderQueueViewController: UIViewController {
         // tableView 셋팅
         listItems
         .debug("tableView")
-            .bind(to: tableView.rx.items(cellIdentifier: OrderQueueCell.identifier, cellType: OrderQueueCell.self)) { (index, item, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: OrderQueueCell.identifier, cellType: OrderQueueCell.self)) { (_, item, cell) in
                 
                 let dateFormatter = DateFormatter()
 
@@ -75,6 +75,7 @@ class OrderQueueViewController: UIViewController {
                 var newList = self.listItems.value
                 
                 let realm = RealmCenter.INSTANCE.getRealm()
+                
                 let data = realm.objects(DBOrder.self).filter("orderedDateKey == %@", newList[indexPath.row].orderedDate)
                 
                 realm.beginWrite()
@@ -97,7 +98,7 @@ class OrderQueueViewController: UIViewController {
         .disposed(by: disposeBag)
         
         // 오늘의 총 매출
-        totalSum$
+        totalPrice
             .map { $0.currencyKR() }
             .bind(to: totalSumLabel.rx.text)
             .disposed(by: disposeBag)
@@ -106,7 +107,7 @@ class OrderQueueViewController: UIViewController {
     // MARK: - Business Logic
     
     var listItems: BehaviorRelay<[OrderQueueModel]> = BehaviorRelay(value: [])
-    var totalSum$: BehaviorRelay<Int> = BehaviorRelay(value: 0)
+    var totalPrice: BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     var disposeBag: DisposeBag = DisposeBag()
     
@@ -141,7 +142,7 @@ class OrderQueueViewController: UIViewController {
         }
         
         listItems.accept(orderQueues)
-        totalSum$.accept(totalSum)
+        totalPrice.accept(totalSum)
 
         self.tableView.refreshControl?.endRefreshing()
     }
@@ -150,4 +151,3 @@ class OrderQueueViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalSumLabel: UILabel!
 }
-

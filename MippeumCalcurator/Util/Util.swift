@@ -21,9 +21,9 @@ extension Int {
     
     // Int To String With Decimal Type ex) 9000 -> "9,000"
     func toDecimalFormat() -> String {
-        let lo_numFormat = NumberFormatter()
-        lo_numFormat.numberStyle = .decimal
-        return lo_numFormat.string(from: NSNumber(value:self)) ?? "0"
+        let numFormat = NumberFormatter()
+        numFormat.numberStyle = .decimal
+        return numFormat.string(from: NSNumber(value:self)) ?? "0"
     }
 }
 
@@ -32,23 +32,23 @@ extension Date {
     /// 이번달의 시작 일자
     /// - Returns: Date
     func startOfMonth() -> Date {
-        var lo_cal = Calendar(identifier: .iso8601)
-        lo_cal.timeZone = TimeZone.current
-        lo_cal.locale   = Locale.current
-        let comp: DateComponents = lo_cal.dateComponents([.year, .month], from: lo_cal.startOfDay(for: self))
-        return lo_cal.date(from: comp)!
+        var cal = Calendar(identifier: .iso8601)
+        cal.timeZone = TimeZone.current
+        cal.locale   = Locale.current
+        let comp: DateComponents = cal.dateComponents([.year, .month], from: cal.startOfDay(for: self))
+        return cal.date(from: comp)!
     }
     
     /// 이번달의 마지막 날짜
     /// - Returns: Date
     func endOfMonth() -> Date {
-        var lo_cal = Calendar(identifier: .iso8601)
-        lo_cal.timeZone = TimeZone.current
-        lo_cal.locale   = Locale.current
-        var comp: DateComponents = lo_cal.dateComponents([.month, .day], from: lo_cal.startOfDay(for: self))
+        var cal = Calendar(identifier: .iso8601)
+        cal.timeZone = TimeZone.current
+        cal.locale   = Locale.current
+        var comp: DateComponents = cal.dateComponents([.month, .day], from: cal.startOfDay(for: self))
         comp.month = 1
         comp.day = -1
-        return lo_cal.date(byAdding: comp, to: self.startOfMonth())!
+        return cal.date(byAdding: comp, to: self.startOfMonth())!
     }
     
     /// 오늘의 00시 00분 00초

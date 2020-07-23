@@ -11,11 +11,12 @@ import RealmSwift
 
 class RealmCenter {
     
+    /// RealmCenter.INSTANCE 로만 접근한다.
     public static let INSTANCE = RealmCenter()
     
     private init() {}
     
-    private var _realmConfig : Realm.Configuration? = nil
+    private var _realmConfig : Realm.Configuration?
     
     internal func getRealm() -> Realm {
         

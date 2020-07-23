@@ -24,8 +24,8 @@ class MenuViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let id = segue.identifier ?? ""
-        if id == "ReceiptViewController", let targetVC = segue.destination as? ReceiptViewController {
+        let identifier = segue.identifier ?? ""
+        if identifier == "ReceiptViewController", let targetVC = segue.destination as? ReceiptViewController {
             targetVC.orderedMenuItems.accept(menuItems.value.filter { $0.count > 0 })
         }
     }
@@ -51,7 +51,7 @@ class MenuViewController: UIViewController {
         tableView.refreshControl = refreshControl
         
         // viewWillAppear || clearButton 클릭시
-        Observable.merge([rx.viewWillAppear.map{ _ in }, clearButton.rx.tap.map{ _ in }])
+        Observable.merge([rx.viewWillAppear.map { _ in }, clearButton.rx.tap.map { _ in }])
             .debug("merge")
             .withLatestFrom(menuItems)
             .map { $0.map { ($0.menu, 0)}}
@@ -133,7 +133,6 @@ class MenuViewController: UIViewController {
             })
             .disposed(by: disposeBag)
             
-        
         // 주문 orderButton
         orderButton.rx.tap
             .debug("orderButton")
@@ -143,8 +142,8 @@ class MenuViewController: UIViewController {
                 if allCount <= 0 { self?.showAlert("주문 실패", "주문해주세요") }
             })
             .filter { $0 > 0 }
-            .map { _ in "OrderQueueViewController" }
-            .subscribe(onNext: { [weak self] identifier in
+            //.map { _ in "OrderQueueViewController" }
+            .subscribe(onNext: { [weak self] _ in
 
                 do {
                     try self?.saveRealm()
@@ -204,7 +203,7 @@ class MenuViewController: UIViewController {
         let realm = RealmCenter.INSTANCE.getRealm()
         
         // CoreData 존재시
-        if let _ = realm.objects(DBProducts.self).first {
+        if nil != realm.objects(DBProducts.self).first {
             
             var menus: [(menu: MenuItem, count: Int)] = []
             
@@ -273,13 +272,14 @@ class MenuViewController: UIViewController {
             let dbOrder = DBOrder(orderedDateKey: orderedDateKey, orderedDate: date, totalPrice: Int64(totalSum), isDone: false)
             
             _ = menuItems.map {
-                dbOrderLists.append(DBOrderList(dbOrder: dbOrder, product_id: $0.menu.item, product_qty: Int64($0.count)))
+                dbOrderLists.append(DBOrderList(dbOrder: dbOrder, productId: $0.menu.item, productQty: Int64($0.count)))
             }
             
             return (dbOrder, dbOrderLists)
         }
         
         let realm = RealmCenter.INSTANCE.getRealm()
+        
         realm.beginWrite()
         
         do {
