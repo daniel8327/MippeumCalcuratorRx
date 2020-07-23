@@ -37,10 +37,10 @@ class OrderQueueCell: UITableViewCell {
     
     // MARK: - UI Logic
     
+    static let identifier = "OrderQueueCell"    
     
     // MARK: - Business Logic
     
-    static let identifier = "OrderQueueCell"
     var disposeBag = DisposeBag()
     
     // MARK: - InterfaceBuilder Links

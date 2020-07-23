@@ -39,6 +39,8 @@ class MenuCell: UITableViewCell {
     
     // MARK: - UI Logic
     
+    static let identifier = "MenuCell"
+    
     func setBinding() {
         Observable
         .merge([title.rx.tap.map { _ in 1 },
@@ -53,7 +55,6 @@ class MenuCell: UITableViewCell {
     
     // MARK: - Business Logic
     
-    static let identifier = "Cell"
     var disposeBag = DisposeBag()
     var onChanged: ((Int) -> Void)?
     

@@ -262,9 +262,9 @@
 		64DFF4DD24C5EA8000FF3976 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				64FB3AF924C86CF000AF2A20 /* Statistics */,
 				64DFF4D724C5E9DF00FF3976 /* Menu */,
 				64FB3AF124C7105100AF2A20 /* OrderQueue */,
+				64FB3AF924C86CF000AF2A20 /* Statistics */,
 				64DFF4D824C5E9DF00FF3976 /* Reciept */,
 			);
 			path = UI;

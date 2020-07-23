@@ -19,7 +19,7 @@ class DBOrder : Object {
     let orderedList = LinkingObjects(fromType: DBOrderList.self, property: "dbOrder")
     
     // Primary Key 는 String, Int만 가능
-    override static func primaryKey() -> String? {
+    override static func primaryKey() -> String {
         return "orderedDateKey"
     }
     
@@ -35,11 +35,11 @@ class DBOrder : Object {
         super.init()
     }
     
-    convenience init(order_date_key: String, order_date: Date, order_price: Int64, isDone: Bool) {
+    convenience init(orderedDateKey: String, orderedDate: Date, totalPrice: Int64, isDone: Bool) {
         self.init()
-        self.orderedDateKey = order_date_key
-        self.orderedDate = order_date
-        self.totalPrice = order_price
+        self.orderedDateKey = orderedDateKey
+        self.orderedDate = orderedDate
+        self.totalPrice = totalPrice
         self.isDone = isDone
     }
 }

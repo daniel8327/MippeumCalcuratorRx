@@ -9,6 +9,9 @@
 import Foundation
 
 extension Int {
+    
+    /// 국내 통화
+    /// - Returns: String
     func currencyKR() -> String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -25,6 +28,9 @@ extension Int {
 }
 
 extension Date {
+    
+    /// 이번달의 시작 일자
+    /// - Returns: Date
     func startOfMonth() -> Date {
         var lo_cal = Calendar(identifier: .iso8601)
         lo_cal.timeZone = TimeZone.current
@@ -32,6 +38,9 @@ extension Date {
         let comp: DateComponents = lo_cal.dateComponents([.year, .month], from: lo_cal.startOfDay(for: self))
         return lo_cal.date(from: comp)!
     }
+    
+    /// 이번달의 마지막 날짜
+    /// - Returns: Date
     func endOfMonth() -> Date {
         var lo_cal = Calendar(identifier: .iso8601)
         lo_cal.timeZone = TimeZone.current

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 struct OrderQueueModel {
     var orderedDate: String
     var orderedList: String

@@ -58,21 +58,21 @@ class ReceiptViewController: UIViewController {
      
     func setBinding() {
 
-//        rx.viewWillAppear
-//        .debug("viewWillAppear")
-//            .take(1)
-//            .subscribe(onNext: {[weak navigationController] _ in
-//                navigationController?.isNavigationBarHidden = false
-//            })
-//            .disposed(by: disposeBag)
+        /*rx.viewWillAppear
+        .debug("viewWillAppear")
+            .take(1)
+            .subscribe(onNext: {[weak navigationController] _ in
+                navigationController?.isNavigationBarHidden = false
+            })
+            .disposed(by: disposeBag)
 
-//        rx.viewWillDisappear
-//        .debug("viewWillDisappear")
-//            .take(1)
-//            .subscribe(onNext: {[weak self] _ in
-//                self?.navigationController?.isNavigationBarHidden = true
-//            })
-//            .disposed(by: disposeBag)
+        rx.viewWillDisappear
+        .debug("viewWillDisappear")
+            .take(1)
+            .subscribe(onNext: {[weak self] _ in
+                self?.navigationController?.isNavigationBarHidden = true
+            })
+            .disposed(by: disposeBag)*/
         
         // 두개 합치기
         Observable.merge(
@@ -111,8 +111,8 @@ class ReceiptViewController: UIViewController {
     // MARK: - Business Logic
     
     let orderedMenuItems: BehaviorRelay<[(menu: MenuItem, count: Int)]> = BehaviorRelay(value: [])
+    
     var disposeBag = DisposeBag()
-
     
     // MARK: - Interface Builder
     

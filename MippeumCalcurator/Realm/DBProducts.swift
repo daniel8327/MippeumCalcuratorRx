@@ -30,7 +30,7 @@ class DBProducts : Object {
     }
     
     // Primary Key 는 String, Int만 가능
-    override static func primaryKey() -> String? {
+    override static func primaryKey() -> String {
         return "productId"
     }
 }

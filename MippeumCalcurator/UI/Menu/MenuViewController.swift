@@ -27,8 +27,6 @@ class MenuViewController: UIViewController {
         let id = segue.identifier ?? ""
         if id == "ReceiptViewController", let targetVC = segue.destination as? ReceiptViewController {
             targetVC.orderedMenuItems.accept(menuItems.value.filter { $0.count > 0 })
-        } else if  id == "OrderQueueViewController", let targetVC = segue.description as? OrderQueueViewController {
-            //targetVC.
         }
     }
     
@@ -71,7 +69,7 @@ class MenuViewController: UIViewController {
         // tableView bind
         menuItems
             .debug("tableview")
-            .bind(to: tableView.rx.items(cellIdentifier: "MenuCell", cellType: MenuCell.self)) { index, item, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: MenuCell.identifier, cellType: MenuCell.self)) { index, item, cell in
                 
                 cell.title.setTitle(item.menu.item, for: .normal)
                 cell.price.text = item.menu.price.currencyKR()
@@ -96,13 +94,13 @@ class MenuViewController: UIViewController {
             .bind(to: itemCountLabel.rx.text)
             .disposed(by: disposeBag)
         
-//        // 총 구매한 아이템 갯수 itemCountLabel 방법 2
-//        menuItems
-//            .debug("itemCountLabel")
-//            .map { $0.map { $0.count }.reduce(0, +) }
-//            .map { "\($0)" }
-//            .bind(to: itemCountLabel.rx.text)
-//            .disposed(by: disposeBag)
+        /*/ 총 구매한 아이템 갯수 itemCountLabel 방법 2
+        menuItems
+            .debug("itemCountLabel")
+            .map { $0.map { $0.count }.reduce(0, +) }
+            .map { "\($0)" }
+            .bind(to: itemCountLabel.rx.text)
+            .disposed(by: disposeBag)*/
         
         // 최종 구매액 totalPriceLabel
         menuItems
@@ -196,29 +194,29 @@ class MenuViewController: UIViewController {
     
     var disposeBag: DisposeBag = DisposeBag()
     
+    /// 판매 목록 조회
+    /// 1. CoreData
+    /// 2. 없으면 서버에서 가져오기
     func fetch() {
         
         indicator.isHidden = false
         
         let realm = RealmCenter.INSTANCE.getRealm()
         
+        // CoreData 존재시
         if let _ = realm.objects(DBProducts.self).first {
             
-            var changedMenu: [(menu: MenuItem, count: Int)] = []
+            var menus: [(menu: MenuItem, count: Int)] = []
             
             let products = realm.objects(DBProducts.self).sorted(byKeyPath: "ordering")
             
             products.forEach { item in
-                changedMenu.append((menu: MenuItem(item: item.productId, price: Int(item.productPrice)), count: 0))
+                menus.append((menu: MenuItem(item: item.productId, price: Int(item.productPrice)), count: 0))
             }
-//            _ = products.enumerated().map {
-//                changedMenu.append((menu: MenuItem(item: $0.element.productId, price: Int($0.element.productPrice)), count: 0))
-//            }
             
-            menuItems.accept(changedMenu)
+            menuItems.accept(menus)
             
             self.tableView.refreshControl?.endRefreshing()
-            
             indicator.isHidden = true
             
         } else {
@@ -232,61 +230,60 @@ class MenuViewController: UIViewController {
                         throw NSError(domain: "Decoding error", code: -1, userInfo: nil)
                     }
                     return response.menus.map { ($0, 0) }
-            }
-            .observeOn(MainScheduler.instance)
-                
-            .do(onNext: { data in
-                
-                data.enumerated().forEach({ (index, item) in
+                }
+                .observeOn(MainScheduler.instance)
+                .do(onNext: { data in
+                    data.enumerated().forEach({ (index, item) in
+                        
+                        realm.beginWrite()
+                        realm.add(DBProducts(productId: item.menu.item, productPrice: Int64(item.menu.price), ordering: Int64(index)), update: .all)
+                        try? realm.commitWrite()
+                    })
                     
-                    realm.beginWrite()
-                    realm.add(DBProducts(productId: item.menu.item, productPrice: Int64(item.menu.price), ordering: Int64(index)), update: .all)
-                    try? realm.commitWrite()
+                }, onError: { [weak self] error in
+                    self?.showAlert("Fetch Fail", error.localizedDescription)
+                    
+                    }, onDispose: { [weak self] in
+                        self?.indicator.isHidden = true
+                        self?.tableView.refreshControl?.endRefreshing()
                 })
-//                _ = data.enumerated().map {
-//
-//                    realm.beginWrite()
-//                    realm.add(DBProducts(product_id: $0.element.menu.item, product_price: Int64($0.element.menu.price), ordering: Int64($0.offset)), update: .all)
-//                    try? realm.commitWrite()
-//                }
-            }, onError: { [weak self] error in
-                self?.showAlert("Fetch Fail", error.localizedDescription)
-                
-                }, onDispose: { [weak self] in
-                    self?.indicator.isHidden = true
-                    self?.tableView.refreshControl?.endRefreshing()
-            })
                 .bind(to: menuItems)
                 .disposed(by: disposeBag)
         }
     }
     
+    /// CoreData 저장
+    /// - Throws: Exception
     func saveRealm() throws {
-        func menuItemToDBOrder(list: [(menu: MenuItem, count: Int)]) -> (DBOrder, [DBOrderList]) {
+        
+        /// menuItem -> realm data
+        /// - Parameter list: <#list description#>
+        /// - Returns: <#description#>
+        func menuItemToRealmData(menuItems: [(menu: MenuItem, count: Int)]) -> (DBOrder, [DBOrderList]) {
             
-            var array = [DBOrderList]()
+            var dbOrderLists = [DBOrderList]()
             let date = Date()
-            let order_date_key = date.description
+            let orderedDateKey = date.description
             
             // total sum 구하기
-            let totalSum = list.map {
+            let totalSum = menuItems.map {
                 $0.menu.price * $0.count
             }.reduce(0, +)
             
-            let dbOrder = DBOrder(order_date_key: order_date_key, order_date: date, order_price: Int64(totalSum), isDone: false)
+            let dbOrder = DBOrder(orderedDateKey: orderedDateKey, orderedDate: date, totalPrice: Int64(totalSum), isDone: false)
             
-            _ = list.map {
-                array.append(DBOrderList(dbOrder: dbOrder, product_id: $0.menu.item, product_qty: Int64($0.count)))
+            _ = menuItems.map {
+                dbOrderLists.append(DBOrderList(dbOrder: dbOrder, product_id: $0.menu.item, product_qty: Int64($0.count)))
             }
             
-            return (dbOrder, array)
+            return (dbOrder, dbOrderLists)
         }
         
         let realm = RealmCenter.INSTANCE.getRealm()
         realm.beginWrite()
         
         do {
-            let (dbOrder, dbOrderList) = menuItemToDBOrder(list: menuItems.value.filter { $0.count > 0 })
+            let (dbOrder, dbOrderList) = menuItemToRealmData(menuItems: menuItems.value.filter { $0.count > 0 })
             
             realm.add(dbOrder)
             realm.add(dbOrderList)

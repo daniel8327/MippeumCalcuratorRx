@@ -45,7 +45,7 @@ class StatisticsViewController: UIViewController {
             .bind(to: totalSumLabel.rx.text)
             .disposed(by: disposeBag)
         
-        listItems
+        chartItems
             .debug("fetched")
             .subscribe(onNext: { dict in
             print(dict)
@@ -55,11 +55,13 @@ class StatisticsViewController: UIViewController {
     
     // MARK: - Business Logic
     
-    var listItems: BehaviorRelay<[String : Int64]> = BehaviorRelay(value: [:])
+    var chartItems: BehaviorRelay<[String : Int64]> = BehaviorRelay(value: [:])
     var totalSum$: BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     var disposeBag: DisposeBag = DisposeBag()
     
+    
+    /// 오늘의 매출 및 판매 항목을 조회한다.
     func fetch() {
         
         let frDate = Date().startTime()
@@ -91,16 +93,17 @@ class StatisticsViewController: UIViewController {
             })
         }
         
-        listItems.accept(dict)
+        chartItems.accept(dict)
         totalSum$.accept(totalSum)
-
     }
     
+    /// 챠트 설정
     func setChart() {
         
+        // 챠트 데이터
         var dataEntry = [PieChartDataEntry]()
         
-        listItems
+        chartItems
             .map { $0.enumerated().forEach { (index, item) in
                 if item.value > 0 {
                     dataEntry.append(PieChartDataEntry(value: Double(item.value), label: item.key))
@@ -129,25 +132,25 @@ class StatisticsViewController: UIViewController {
         
         //lo_data.colors = [UIColor.green, UIColor.red, UIColor.blue, UIColor.brown, UIColor.purple]
         set.colors = ChartColorTemplates.vordiplom()
-        + ChartColorTemplates.joyful()
-        + ChartColorTemplates.colorful()
-        + ChartColorTemplates.liberty()
-        + ChartColorTemplates.pastel()
-        + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
+            + ChartColorTemplates.joyful()
+            + ChartColorTemplates.colorful()
+            + ChartColorTemplates.liberty()
+            + ChartColorTemplates.pastel()
+            + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
         
-        let data = PieChartData(dataSet: set)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .percent
+        numberFormatter.maximumFractionDigits = 1
+        numberFormatter.multiplier = 1
+        numberFormatter.percentSymbol = "%"
         
-        let pFormatter = NumberFormatter()
-        pFormatter.numberStyle = .percent
-        pFormatter.maximumFractionDigits = 1
-        pFormatter.multiplier = 1
-        pFormatter.percentSymbol = "%"
-        data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+        let chartDataSetting = PieChartData(dataSet: set)
         
-        data.setValueFont(.systemFont(ofSize: 15, weight: .light))
-        data.setValueTextColor(.darkGray)
+        chartDataSetting.setValueFormatter(DefaultValueFormatter(formatter: numberFormatter))
+        chartDataSetting.setValueFont(.systemFont(ofSize: 15, weight: .light))
+        chartDataSetting.setValueTextColor(.darkGray)
         
-        chartView.data = data
+        chartView.data = chartDataSetting
         
         chartView.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
     }

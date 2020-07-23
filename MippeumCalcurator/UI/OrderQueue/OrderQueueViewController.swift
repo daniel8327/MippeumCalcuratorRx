@@ -47,7 +47,7 @@ class OrderQueueViewController: UIViewController {
         // tableView 셋팅
         listItems
         .debug("tableView")
-            .bind(to: tableView.rx.items(cellIdentifier: "OrderQueueCell", cellType: OrderQueueCell.self)) { (index, item, cell) in
+            .bind(to: tableView.rx.items(cellIdentifier: OrderQueueCell.identifier, cellType: OrderQueueCell.self)) { (index, item, cell) in
                 
                 let dateFormatter = DateFormatter()
 
@@ -64,10 +64,10 @@ class OrderQueueViewController: UIViewController {
                 
         }.disposed(by: disposeBag)
         
+        // 왼쪽으로 밀어서 삭제
         tableView.rx.itemDeleted
             .subscribe(onNext: {[weak self] indexPath in
-            print(indexPath)
-            
+                
                 guard let self = self else {
                     return
                 }
@@ -80,9 +80,8 @@ class OrderQueueViewController: UIViewController {
                 realm.beginWrite()
                 
                 data.enumerated().forEach { (_, item) in
-                    item.isDone = true
+                    item.isDone = true // 제작 완료 처리
                 }
-                
                 realm.add(data, update: .modified)
                 
                 do {
@@ -102,7 +101,6 @@ class OrderQueueViewController: UIViewController {
             .map { $0.currencyKR() }
             .bind(to: totalSumLabel.rx.text)
             .disposed(by: disposeBag)
-        
     }
     
     // MARK: - Business Logic
@@ -112,6 +110,7 @@ class OrderQueueViewController: UIViewController {
     
     var disposeBag: DisposeBag = DisposeBag()
     
+    /// 오늘의 매출 누계와 대기 주문 내역 조회
     func fetch() {
         
         let frDate = Date().startTime()
@@ -124,7 +123,6 @@ class OrderQueueViewController: UIViewController {
             .filter("orderedDate <= %@", toDate)
 //            .filter("isDone == false") 총 매출을 계산해야하므로 제작완료도 포함해야한다.
             .sorted(byKeyPath: "orderedDate", ascending: false)
-        
         
         var orderQueues: [OrderQueueModel] = []
         var totalSum = 0
@@ -141,7 +139,6 @@ class OrderQueueViewController: UIViewController {
             
             //print("주문시간: \(element.order_date_key) 주문 내용 : \(element.order_list.map { "\($0.product_id)(\($0.product_qty))"}.joined(separator: ", "))")
         }
-        //print(orderQueues)
         
         listItems.accept(orderQueues)
         totalSum$.accept(totalSum)
@@ -152,7 +149,5 @@ class OrderQueueViewController: UIViewController {
     // MARK: - Interface Builder
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var totalSumLabel: UILabel!
-    
-    
 }
 
