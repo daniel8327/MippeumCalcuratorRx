@@ -6,10 +6,11 @@
 //  Copyright © 2020 장태현. All rights reserved.
 //
 
+import UIKit
+
 import RxCocoa
 import RxSwift
 import RxViewController
-import UIKit
 
 class MenuViewController: UIViewController {
     

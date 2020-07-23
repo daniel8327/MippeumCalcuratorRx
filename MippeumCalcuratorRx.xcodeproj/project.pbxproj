@@ -171,7 +171,9 @@
 				64DFF4D224C5E96C00FF3976 /* App */,
 				64DFF4D324C5E98700FF3976 /* Asset */,
 				64DFF4D624C5E9DF00FF3976 /* Domain */,
-				64DFF4DD24C5EA8000FF3976 /* UI */,
+				64DFF4D424C5E9DA00FF3976 /* Model */,
+				64DFF4DD24C5EA8000FF3976 /* View */,
+				64FB3B4B24C9D48500AF2A20 /* ViewModel */,
 				64DFF4DE24C5EACA00FF3976 /* Util */,
 				64331C6424C673A0008EFAAA /* Realm */,
 				64DFF49D24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld */,
@@ -237,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				64DFF4D524C5E9DD00FF3976 /* Service */,
-				64DFF4D424C5E9DA00FF3976 /* Model */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -259,7 +260,7 @@
 			path = Reciept;
 			sourceTree = "<group>";
 		};
-		64DFF4DD24C5EA8000FF3976 /* UI */ = {
+		64DFF4DD24C5EA8000FF3976 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				64DFF4D724C5E9DF00FF3976 /* Menu */,
@@ -267,7 +268,7 @@
 				64FB3AF924C86CF000AF2A20 /* Statistics */,
 				64DFF4D824C5E9DF00FF3976 /* Reciept */,
 			);
-			path = UI;
+			path = View;
 			sourceTree = "<group>";
 		};
 		64DFF4DE24C5EACA00FF3976 /* Util */ = {
@@ -302,6 +303,13 @@
 				64FB3AFA24C86DEE00AF2A20 /* StatisticsViewController.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		64FB3B4B24C9D48500AF2A20 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7714FD15DEAE76ABF4F0E2FD /* Frameworks */ = {

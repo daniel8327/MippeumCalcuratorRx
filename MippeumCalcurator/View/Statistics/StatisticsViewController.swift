@@ -7,10 +7,11 @@
 //
 
 import UIKit
+
+import Charts
+import RealmSwift
 import RxSwift
 import RxCocoa
-import RealmSwift
-import Charts
 
 class StatisticsViewController: UIViewController {
 
