@@ -27,17 +27,17 @@ class MenuViewController: UIViewController {
         
         let identifier = segue.identifier ?? ""
         if identifier == ReceiptViewController.identifier,
-            let menus = sender as? [(menu: MenuItem, count: Int)],
+            let menus = sender as? [(menu: Menu, count: Int)],
             let targetVC = segue.destination as? ReceiptViewController {
             
-            var viewMenuItem = [ViewMenuItem]()
+            var menuModels = [MenuModel]()
             
             _ = menus
                 .filter { $0.count > 0 }
                 .map {
-                viewMenuItem.append(ViewMenuItem(item: $0.menu.item, price: $0.menu.price, count: $0.count))
+                menuModels.append(MenuModel(item: $0.menu.item, price: $0.menu.price, count: $0.count))
             }
-            targetVC.viewModel = ReceiptViewModel(viewMenuItem)
+            targetVC.viewModel = ReceiptViewModel(menuModels)
         }
     }
     
@@ -89,7 +89,7 @@ class MenuViewController: UIViewController {
                     guard let self = self else { return }
                     let count = max((item.count + data), 0)
                     
-                    var changedMenu: [(menu: MenuItem, count: Int)] = self.menuItems.value
+                    var changedMenu: [(menu: Menu, count: Int)] = self.menuItems.value
                     changedMenu[index] = (item.menu, count)
                     self.menuItems.accept(changedMenu)
                 }
@@ -191,15 +191,9 @@ class MenuViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    func showAlert(_ title: String, _ message: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertVC, animated: true, completion: nil)
-    }
-    
     // MARK: - Business Logic
     
-    let menuItems: BehaviorRelay<[(menu: MenuItem, count: Int)]> = BehaviorRelay(value: [])
+    let menuItems: BehaviorRelay<[(menu: Menu, count: Int)]> = BehaviorRelay(value: [])
     let orderedCount: BehaviorRelay<Int> = BehaviorRelay(value: 0)
     
     var disposeBag: DisposeBag = DisposeBag()
@@ -216,12 +210,12 @@ class MenuViewController: UIViewController {
         // CoreData 존재시
         if nil != realm.objects(DBProducts.self).first {
             
-            var menus: [(menu: MenuItem, count: Int)] = []
+            var menus: [(menu: Menu, count: Int)] = []
             
             let products = realm.objects(DBProducts.self).sorted(byKeyPath: "ordering")
             
             products.forEach { item in
-                menus.append((menu: MenuItem(item: item.productId, price: Int(item.productPrice)), count: 0))
+                menus.append((menu: Menu(item: item.productId, price: Int(item.productPrice)), count: 0))
             }
             
             menuItems.accept(menus)
@@ -234,7 +228,7 @@ class MenuViewController: UIViewController {
             APIService.fetchAllMenusRx()
                 .map { data in
                     struct Response: Decodable {
-                        let menus: [MenuItem]
+                        let menus: [Menu]
                     }
                     guard let response = try? JSONDecoder().decode(Response.self, from: data) else {
                         throw NSError(domain: "Decoding error", code: -1, userInfo: nil)
@@ -243,13 +237,14 @@ class MenuViewController: UIViewController {
                 }
                 .observeOn(MainScheduler.instance)
                 .do(onNext: { data in
-                    data.enumerated().forEach({ (index, item) in
-                        
-                        realm.beginWrite()
-                        realm.add(DBProducts(productId: item.menu.item, productPrice: Int64(item.menu.price), ordering: Int64(index)), update: .all)
-                        try? realm.commitWrite()
-                    })
-                    
+                    _ = data
+                        .enumerated()
+                        .map { index, item in
+
+                            realm.beginWrite()
+                            realm.add(DBProducts(productId: item.menu.item, productPrice: Int64(item.menu.price), ordering: Int64(index)), update: .all)
+                            try? realm.commitWrite()
+                    }
                 }, onError: { [weak self] error in
                     self?.showAlert("Fetch Fail", error.localizedDescription)
                     
@@ -269,7 +264,7 @@ class MenuViewController: UIViewController {
         /// menuItem -> realm data
         /// - Parameter list: <#list description#>
         /// - Returns: <#description#>
-        func menuItemToRealmData(menuItems: [(menu: MenuItem, count: Int)]) -> (DBOrder, [DBOrderList]) {
+        func menuItemToRealmData(menuItems: [(menu: Menu, count: Int)]) -> (DBOrder, [DBOrderList]) {
             
             var dbOrderLists = [DBOrderList]()
             let date = Date()

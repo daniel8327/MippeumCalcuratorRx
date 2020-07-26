@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MenuItem: Decodable {
+class Menu: Decodable {
     var item: String
     var price: Int
     

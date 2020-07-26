@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct ViewMenuItem {
+struct MenuModel {
     var item: String
     var price: Int
     var count: Int
     
-    init(menuItem: MenuItem) {
+    init(menuItem: Menu) {
         item = menuItem.item
         price = menuItem.price
         count = 0

@@ -23,7 +23,7 @@
 		64DFF4AF24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4AE24C4BA6C00FF3976 /* MippeumCalcuratorTests.swift */; };
 		64DFF4BA24C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4B924C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift */; };
 		64DFF4CB24C4BAF000FF3976 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C724C4BAF000FF3976 /* APIService.swift */; };
-		64DFF4CC24C4BAF000FF3976 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C824C4BAF000FF3976 /* MenuItem.swift */; };
+		64DFF4CC24C4BAF000FF3976 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C824C4BAF000FF3976 /* Menu.swift */; };
 		64DFF4CD24C4BAF000FF3976 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4C924C4BAF000FF3976 /* Util.swift */; };
 		64DFF4CE24C4BAF000FF3976 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4CA24C4BAF000FF3976 /* MenuCell.swift */; };
 		64DFF4D124C5665700FF3976 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DFF4D024C5665700FF3976 /* ReceiptViewController.swift */; };
@@ -33,6 +33,8 @@
 		64FB3AFB24C86DEE00AF2A20 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3AFA24C86DEE00AF2A20 /* StatisticsViewController.swift */; };
 		64FB3B4D24C9DA5300AF2A20 /* ViewMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B4C24C9DA5300AF2A20 /* ViewMenuItem.swift */; };
 		64FB3B4F24C9DEFC00AF2A20 /* ReceiptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B4E24C9DEFC00AF2A20 /* ReceiptViewModel.swift */; };
+		64FB3B9024CA78E100AF2A20 /* OrderQueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B8F24CA78E000AF2A20 /* OrderQueueViewModel.swift */; };
+		64FB3B9D24CB1C8D00AF2A20 /* OrderQueueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B9C24CB1C8C00AF2A20 /* OrderQueueStore.swift */; };
 		E3EF943625FEFAAA5F9937BF /* Pods_MippeumCalcuratorRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B4F40BA6CB4B92D9152CB /* Pods_MippeumCalcuratorRx.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +77,7 @@
 		64DFF4B924C4BA6C00FF3976 /* MippeumCalcuratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MippeumCalcuratorUITests.swift; sourceTree = "<group>"; };
 		64DFF4BB24C4BA6C00FF3976 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64DFF4C724C4BAF000FF3976 /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		64DFF4C824C4BAF000FF3976 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		64DFF4C824C4BAF000FF3976 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		64DFF4C924C4BAF000FF3976 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		64DFF4CA24C4BAF000FF3976 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		64DFF4D024C5665700FF3976 /* ReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,8 @@
 		64FB3AFA24C86DEE00AF2A20 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		64FB3B4C24C9DA5300AF2A20 /* ViewMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMenuItem.swift; sourceTree = "<group>"; };
 		64FB3B4E24C9DEFC00AF2A20 /* ReceiptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewModel.swift; sourceTree = "<group>"; };
+		64FB3B8F24CA78E000AF2A20 /* OrderQueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueViewModel.swift; sourceTree = "<group>"; };
+		64FB3B9C24CB1C8C00AF2A20 /* OrderQueueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueStore.swift; sourceTree = "<group>"; };
 		6C940524D69CC177FF15AFA4 /* Pods-MippeumCalcuratorRx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx.release.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx/Pods-MippeumCalcuratorRx.release.xcconfig"; sourceTree = "<group>"; };
 		7E273CDB2412EBE6DE0F9C30 /* Pods-MippeumCalcuratorRx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx/Pods-MippeumCalcuratorRx.debug.xcconfig"; sourceTree = "<group>"; };
 		8284D38A9D14393E3F4FE093 /* Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests/Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,9 +143,8 @@
 		64331C6424C673A0008EFAAA /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				64331C6524C673FA008EFAAA /* DBOrder.swift */,
-				64331C6D24C67942008EFAAA /* DBOrderList.swift */,
-				64331C6F24C679A1008EFAAA /* DBProducts.swift */,
+				64FB3B9B24CB1C5100AF2A20 /* Domain */,
+				64FB3B9A24CB1C3300AF2A20 /* DB */,
 				64331C7124C67AEE008EFAAA /* RealmCenter.swift */,
 			);
 			path = Realm;
@@ -226,7 +229,9 @@
 		64DFF4D424C5E9DA00FF3976 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				64DFF4C824C4BAF000FF3976 /* MenuItem.swift */,
+				64FB3B9124CA7AAE00AF2A20 /* Service */,
+				64FB3B9324CA7AED00AF2A20 /* Menu */,
+				64FB3B9224CA7AB800AF2A20 /* OrderQueue */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,19 +291,10 @@
 		64FB3AF124C7105100AF2A20 /* OrderQueue */ = {
 			isa = PBXGroup;
 			children = (
-				64FB3AF424C7266000AF2A20 /* Model */,
 				64FB3AF224C7107400AF2A20 /* OrderQueueViewController.swift */,
 				64FB3AF724C72B2700AF2A20 /* OrderQueueCell.swift */,
 			);
 			path = OrderQueue;
-			sourceTree = "<group>";
-		};
-		64FB3AF424C7266000AF2A20 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				64FB3AF524C7267A00AF2A20 /* OrderQueueModel.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		64FB3AF924C86CF000AF2A20 /* Statistics */ = {
@@ -312,10 +308,52 @@
 		64FB3B4B24C9D48500AF2A20 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				64FB3B4C24C9DA5300AF2A20 /* ViewMenuItem.swift */,
 				64FB3B4E24C9DEFC00AF2A20 /* ReceiptViewModel.swift */,
+				64FB3B8F24CA78E000AF2A20 /* OrderQueueViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		64FB3B9124CA7AAE00AF2A20 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				64DFF4C824C4BAF000FF3976 /* Menu.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		64FB3B9224CA7AB800AF2A20 /* OrderQueue */ = {
+			isa = PBXGroup;
+			children = (
+				64FB3AF524C7267A00AF2A20 /* OrderQueueModel.swift */,
+			);
+			path = OrderQueue;
+			sourceTree = "<group>";
+		};
+		64FB3B9324CA7AED00AF2A20 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				64FB3B4C24C9DA5300AF2A20 /* ViewMenuItem.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		64FB3B9A24CB1C3300AF2A20 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				64331C6524C673FA008EFAAA /* DBOrder.swift */,
+				64331C6D24C67942008EFAAA /* DBOrderList.swift */,
+				64331C6F24C679A1008EFAAA /* DBProducts.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		64FB3B9B24CB1C5100AF2A20 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				64FB3B9C24CB1C8C00AF2A20 /* OrderQueueStore.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		7714FD15DEAE76ABF4F0E2FD /* Frameworks */ = {
@@ -591,14 +629,16 @@
 				64FB3B4D24C9DA5300AF2A20 /* ViewMenuItem.swift in Sources */,
 				64DFF4CB24C4BAF000FF3976 /* APIService.swift in Sources */,
 				64DFF49524C4BA6900FF3976 /* AppDelegate.swift in Sources */,
-				64DFF4CC24C4BAF000FF3976 /* MenuItem.swift in Sources */,
+				64DFF4CC24C4BAF000FF3976 /* Menu.swift in Sources */,
 				64DFF4CD24C4BAF000FF3976 /* Util.swift in Sources */,
 				64FB3AFB24C86DEE00AF2A20 /* StatisticsViewController.swift in Sources */,
+				64FB3B9024CA78E100AF2A20 /* OrderQueueViewModel.swift in Sources */,
 				64331C7024C679A1008EFAAA /* DBProducts.swift in Sources */,
 				64331C6E24C67943008EFAAA /* DBOrderList.swift in Sources */,
 				64331C6624C673FA008EFAAA /* DBOrder.swift in Sources */,
 				64DFF4CE24C4BAF000FF3976 /* MenuCell.swift in Sources */,
 				64DFF49724C4BA6900FF3976 /* SceneDelegate.swift in Sources */,
+				64FB3B9D24CB1C8D00AF2A20 /* OrderQueueStore.swift in Sources */,
 				64331C7224C67AEF008EFAAA /* RealmCenter.swift in Sources */,
 				64FB3AF324C7107400AF2A20 /* OrderQueueViewController.swift in Sources */,
 				64DFF49F24C4BA6900FF3976 /* MippeumCalcurator.xcdatamodeld in Sources */,

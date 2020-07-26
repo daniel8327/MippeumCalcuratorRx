@@ -21,7 +21,7 @@ class ReceiptViewModel: ReceiptViewModelType {
     let orderListEachSum: Observable<String>
     let totalPrice: Observable<String>
     
-    init(_ orderedMenuItems: [ViewMenuItem] = []) {
+    init(_ orderedMenuItems: [MenuModel] = []) {
         let menus = Observable.just(orderedMenuItems)
         let totalSum = menus.map { $0.map { $0.price * $0.count }.reduce(0, +) }
         

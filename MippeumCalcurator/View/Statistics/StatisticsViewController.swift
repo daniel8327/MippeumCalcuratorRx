@@ -84,14 +84,16 @@ class StatisticsViewController: UIViewController {
         
         var totalSum = 0
         
-        dbOrders.enumerated().forEach { (_, item) in
-            
-            totalSum += Int(item.totalPrice)
-            
-            item.orderedList.forEach({
-                dict.updateValue(((dict[$0.productId] ?? 0) + $0.productQty), forKey: $0.productId)
-            })
-        }
+        dbOrders
+            .enumerated()
+            .map { _, item in
+
+                totalSum += Int(item.totalPrice)
+                
+                item.orderedList.forEach({
+                    dict.updateValue(((dict[$0.productId] ?? 0) + $0.productQty), forKey: $0.productId)
+                })
+            }
         
         chartItems.accept(dict)
         totalPrice.accept(totalSum)
@@ -104,7 +106,7 @@ class StatisticsViewController: UIViewController {
         var dataEntry = [PieChartDataEntry]()
         
         chartItems
-            .map { $0.enumerated().forEach { (_, item) in
+            .map { $0.enumerated().map { _, item in
                 if item.value > 0 {
                     dataEntry.append(PieChartDataEntry(value: Double(item.value), label: item.key))
                 }

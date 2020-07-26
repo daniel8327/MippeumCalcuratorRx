@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Int {
     
@@ -24,6 +25,13 @@ extension Int {
         let numFormat = NumberFormatter()
         numFormat.numberStyle = .decimal
         return numFormat.string(from: NSNumber(value:self)) ?? "0"
+    }
+}
+
+extension Int64 {
+    
+    func currencyKR() -> String {
+        return Int(self).currencyKR()
     }
 }
 
@@ -66,5 +74,14 @@ extension Date {
         components.day = 1
         components.second = -1
         return Calendar.current.date(byAdding: components, to: startTime())!
+    }
+}
+
+extension UIViewController {
+    
+    func showAlert(_ title: String, _ message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertVC, animated: true, completion: nil)
     }
 }

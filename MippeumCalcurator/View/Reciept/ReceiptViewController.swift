@@ -75,7 +75,6 @@ class ReceiptViewController: UIViewController {
         Observable.merge(
             [rx.viewWillAppear.take(1).map { _ in false }
                 ,rx.viewWillDisappear.take(1).map { _ in true }])
-            .debug("merge")
             .subscribe(onNext: { [weak navigationController] bool in
                 navigationController?.isNavigationBarHidden = bool
             })
