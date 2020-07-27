@@ -12,9 +12,42 @@ import RxCocoa
 import RxSwift
 
 class OrderQueueCell: UITableViewCell {
-
+    
+    static let identifier = "OrderQueueCell"
+    
+    var disposeBag = DisposeBag()
+    let itemObserver: AnyObserver<OrderQueueModel>
+    
     // MARK: - Life Cycle
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        let item = PublishSubject<OrderQueueModel>()
+        
+        itemObserver = item.asObserver()
+        
+        super.init(coder: aDecoder)
+        
+        item
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { [weak self] data in
+                
+                let dateFormatter = DateFormatter()
 
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:sssZ"
+                dateFormatter.timeZone = NSTimeZone(name: "KR") as TimeZone?
+
+                let date:Date = dateFormatter.date(from: data.orderedDate)!
+                
+                dateFormatter.dateFormat = "HH:mm:ss"
+                let dateStr = dateFormatter.string(from: date)
+                
+                self?.orderDateLabel.text = dateStr
+                self?.orderListLabel.text = data.orderedList
+            })
+            .disposed(by: disposeBag)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,14 +68,6 @@ class OrderQueueCell: UITableViewCell {
             """)
         // Configure the view for the selected state
     }
-    
-    // MARK: - UI Logic
-    
-    static let identifier = "OrderQueueCell"    
-    
-    // MARK: - Business Logic
-    
-    var disposeBag = DisposeBag()
     
     // MARK: - InterfaceBuilder Links
     
