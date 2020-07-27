@@ -81,40 +81,15 @@ class OrderQueueViewController: UIViewController {
                 cell.itemObserver.onNext(item)
             }.disposed(by: disposeBag)
         
-//        // 왼쪽으로 밀어서 삭제
-//        tableView.rx.itemDeleted
-//            .subscribe(onNext: {[weak self] indexPath in
-//                
-//                guard let self = self else {
-//                    return
-//                }
-//                
-//                var newList = self.viewModel.listItemsObservable..value
-//                
-//                let realm = RealmCenter.INSTANCE.getRealm()
-//                
-//                let data = realm.objects(DBOrder.self).filter("orderedDateKey == %@", newList[indexPath.row].orderedDate)
-//                
-//                realm.beginWrite()
-//                
-//                data
-//                    .enumerated()
-//                    .map { _, item in
-//                    item.isDone = true // 제작 완료 처리
-//                }
-//                realm.add(data, update: .modified)
-//                
-//                do {
-//                    try realm.commitWrite()
-//
-//                    newList.remove(at: indexPath.row)
-//                    self.listItems.accept(newList)
-//                    
-//                } catch let error {
-//                    print("tableView Row Delete failed .. \(error.localizedDescription)")
-//                }
-//        })
-//        .disposed(by: disposeBag)
+        // 왼쪽으로 밀어서 삭제
+        tableView.rx.itemDeleted
+            .subscribe(onNext: {[weak self] indexPath in
+                guard let self = self else {
+                    return
+                }
+                self.viewModel.deleteRow(indexPath: indexPath)
+        })
+        .disposed(by: disposeBag)
         
         // 오늘의 총 매출
         viewModel.totalPriceObservable

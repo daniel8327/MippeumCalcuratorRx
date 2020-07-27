@@ -18,6 +18,9 @@ protocol OrderQueueViewModelType {
     var activatingObservable: Observable<Bool> { get }
     var totalPriceObservable: Observable<String> { get }
     var listItemsObservable: Observable<[OrderQueueModel]> { get }
+    
+    func deleteRow(indexPath: IndexPath)
+    
 }
 
 class OrderQueueViewModel: OrderQueueViewModelType {
@@ -32,18 +35,18 @@ class OrderQueueViewModel: OrderQueueViewModelType {
     var totalPriceObservable: Observable<String>
     var listItemsObservable: Observable<[OrderQueueModel]>
     
+    let menuSubject = BehaviorRelay<(Int, [OrderQueueModel])>(value: (0, []))
+    
     init(_ orderQueue: OrderQueueFetchable = OrderQueueStore()) {
         
         // Subject
         let fetching = PublishSubject<Void>()
         
-        let menuSubject = BehaviorRelay<(Int, [OrderQueueModel])>(value: (0, []))
         let activatingSubject = BehaviorSubject<Bool>(value: false)
         
         doFetching = fetching.asObserver()
         
         fetching
-            .debug("OrderQueueViewModel fetching")
             .do(onNext: { _ in activatingSubject.onNext(true)})
             .flatMap { orderQueue.fetchOrderQueue() }
             .map { $0 }
@@ -52,15 +55,42 @@ class OrderQueueViewModel: OrderQueueViewModelType {
             .disposed(by: disposeBag)
         
         totalPriceObservable = menuSubject
-            .debug("OrderQueueViewModel menuSubject -> totalPriceObservable")
             .map { $0.0.currencyKR() }
         
         listItemsObservable = menuSubject
-            .debug("OrderQueueViewModel menuSubject -> listItemsObservable")
             .map { $0.1 }
         
         activatingObservable = activatingSubject
-            .debug("OrderQueueViewModel activatingSubject -> activatingObservable")
             .distinctUntilChanged()
+    }
+    
+    /// 매출데이터 fetch
+    /// - Parameter indexPath: IndexPath
+    func deleteRow(indexPath: IndexPath) {
+        
+        var newList = menuSubject.value.1
+        
+        let realm = RealmCenter.INSTANCE.getRealm()
+        
+        let data = realm.objects(DBOrder.self).filter("orderedDateKey == %@", newList[indexPath.row].orderedDate)
+
+        realm.beginWrite()
+        
+        _ = data
+            .enumerated()
+            .map { _, item in
+                item.isDone = true // 제작 완료 처리
+            }
+        realm.add(data, update: .all)
+
+        do {
+            try realm.commitWrite()
+
+            newList.remove(at: indexPath.row)
+            doFetching.onNext(()) // 재조회 요청
+            
+        } catch let error {
+            print("tableView Row Delete failed .. \(error.localizedDescription)")
+        }
     }
 }

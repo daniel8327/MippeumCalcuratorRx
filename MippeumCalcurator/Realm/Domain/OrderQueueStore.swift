@@ -55,8 +55,10 @@ class OrderQueueStore: OrderQueueFetchable {
             _ = dbOrders
                 .enumerated()
                 .map { _, item in
+                    // isDone을 포함하는 전체 매출액
                     totalSum += Int(item.totalPrice)
                     
+                    // 주문 큐 
                     if !item.isDone {
                         orderQueues.append(OrderQueueModel(
                             orderedDate: item.orderedDateKey
