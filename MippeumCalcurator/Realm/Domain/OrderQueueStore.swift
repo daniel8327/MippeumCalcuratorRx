@@ -34,7 +34,7 @@ class OrderQueueStore: OrderQueueFetchable {
         }
     }
     
-    func fetch(onComplete: @escaping (Result<(Int, [OrderQueueModel]), Error>) -> Void){
+    func fetch(onComplete: @escaping (Result<(Int, [OrderQueueModel]), Error>) -> Void) {
         
         DispatchQueue.global(qos: .background).async {
             
@@ -46,7 +46,7 @@ class OrderQueueStore: OrderQueueFetchable {
             let dbOrders = realm.objects(DBOrder.self)
                 .filter("orderedDate >= %@", frDate)
                 .filter("orderedDate <= %@", toDate)
-                //            .filter("isDone == false") 총 매출을 계산해야하므로 제작완료도 포함해야한다.
+                //.filter("isDone == false") 총 매출을 계산해야하므로 제작완료도 포함해야한다.
                 .sorted(byKeyPath: "orderedDate", ascending: false)
             
             var orderQueues: [OrderQueueModel] = []
@@ -54,7 +54,7 @@ class OrderQueueStore: OrderQueueFetchable {
             
             _ = dbOrders
                 .enumerated()
-                .map { index, item in
+                .map { _, item in
                     totalSum += Int(item.totalPrice)
                     
                     if !item.isDone {
