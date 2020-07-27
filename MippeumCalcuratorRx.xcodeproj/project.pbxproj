@@ -35,6 +35,8 @@
 		64FB3B4F24C9DEFC00AF2A20 /* ReceiptViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B4E24C9DEFC00AF2A20 /* ReceiptViewModel.swift */; };
 		64FB3B9024CA78E100AF2A20 /* OrderQueueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B8F24CA78E000AF2A20 /* OrderQueueViewModel.swift */; };
 		64FB3B9D24CB1C8D00AF2A20 /* OrderQueueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B9C24CB1C8C00AF2A20 /* OrderQueueStore.swift */; };
+		64FB3B9F24CEC1CD00AF2A20 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3B9E24CEC1CC00AF2A20 /* StatisticsViewModel.swift */; };
+		64FB3BA124CEC89500AF2A20 /* StatisticsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64FB3BA024CEC89500AF2A20 /* StatisticsStore.swift */; };
 		E3EF943625FEFAAA5F9937BF /* Pods_MippeumCalcuratorRx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A54B4F40BA6CB4B92D9152CB /* Pods_MippeumCalcuratorRx.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +91,8 @@
 		64FB3B4E24C9DEFC00AF2A20 /* ReceiptViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewModel.swift; sourceTree = "<group>"; };
 		64FB3B8F24CA78E000AF2A20 /* OrderQueueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueViewModel.swift; sourceTree = "<group>"; };
 		64FB3B9C24CB1C8C00AF2A20 /* OrderQueueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderQueueStore.swift; sourceTree = "<group>"; };
+		64FB3B9E24CEC1CC00AF2A20 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		64FB3BA024CEC89500AF2A20 /* StatisticsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsStore.swift; sourceTree = "<group>"; };
 		6C940524D69CC177FF15AFA4 /* Pods-MippeumCalcuratorRx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx.release.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx/Pods-MippeumCalcuratorRx.release.xcconfig"; sourceTree = "<group>"; };
 		7E273CDB2412EBE6DE0F9C30 /* Pods-MippeumCalcuratorRx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx/Pods-MippeumCalcuratorRx.debug.xcconfig"; sourceTree = "<group>"; };
 		8284D38A9D14393E3F4FE093 /* Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig"; path = "Target Support Files/Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests/Pods-MippeumCalcuratorRx-MippeumCalcuratorRxUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 			children = (
 				64FB3B4E24C9DEFC00AF2A20 /* ReceiptViewModel.swift */,
 				64FB3B8F24CA78E000AF2A20 /* OrderQueueViewModel.swift */,
+				64FB3B9E24CEC1CC00AF2A20 /* StatisticsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 			isa = PBXGroup;
 			children = (
 				64FB3B9C24CB1C8C00AF2A20 /* OrderQueueStore.swift */,
+				64FB3BA024CEC89500AF2A20 /* StatisticsStore.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -623,7 +629,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64FB3BA124CEC89500AF2A20 /* StatisticsStore.swift in Sources */,
 				64FB3AF824C72B2700AF2A20 /* OrderQueueCell.swift in Sources */,
+				64FB3B9F24CEC1CD00AF2A20 /* StatisticsViewModel.swift in Sources */,
 				64DFF49924C4BA6900FF3976 /* MenuViewController.swift in Sources */,
 				64FB3AF624C7267A00AF2A20 /* OrderQueueModel.swift in Sources */,
 				64FB3B4D24C9DA5300AF2A20 /* ViewMenuItem.swift in Sources */,

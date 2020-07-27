@@ -36,7 +36,7 @@ class APIService {
     
     static func fetchAllMenusRx() -> Observable<Data> {
         return Observable.create { emitter in
-            fetchAllMenus() { result in
+            fetchAllMenus { result in
                 switch result {
                 case let .success(data):
                     emitter.onNext(data)

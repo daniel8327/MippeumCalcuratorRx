@@ -20,7 +20,6 @@ protocol OrderQueueViewModelType {
     var listItemsObservable: Observable<[OrderQueueModel]> { get }
     
     func deleteRow(indexPath: IndexPath)
-    
 }
 
 class OrderQueueViewModel: OrderQueueViewModelType {

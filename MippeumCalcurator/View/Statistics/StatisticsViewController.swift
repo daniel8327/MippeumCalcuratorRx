@@ -15,105 +15,84 @@ import RxCocoa
 
 class StatisticsViewController: UIViewController {
 
+    let viewModel: StatisticsViewModelType
+    var disposeBag = DisposeBag()
+    
     // MARK: - Life Cycle
+    
+    init(viewModel: StatisticsViewModelType = StatisticsViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.viewModel = StatisticsViewModel()
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setBinding()
-        fetch()
-        setChart()
     }
     
     // MARK: - UI Logic
     
     func setBinding() {
-
-        // 두개 합치기
+        
+        let firstLoad = rx.viewWillAppear
+            .take(1)
+            .map { _ in false}
+        
+        let dispappear = rx.viewWillDisappear
+            .take(1)
+            .map { _ in false }
+        
+        // 처음 보이고 사라질때 네비게이션 제어
         Observable.merge(
-            [rx.viewWillAppear.map { _ in false }
-                ,rx.viewWillDisappear.map { _ in true }])
-            .debug("merge")
-            .map { $0 }
+            [firstLoad, dispappear])
             .subscribe(onNext: { [weak navigationController] bool in
                 navigationController?.isNavigationBarHidden = bool
             })
             .disposed(by: disposeBag)
         
+        // 처음보이거나 재조회시 펫치요구
+        firstLoad
+            .map { _ in }
+            .bind(to: viewModel.doFetching)
+            .disposed(by: disposeBag)
+        
         // 오늘의 총 매출
-        totalPrice
-            .map { $0.currencyKR() }
+        viewModel.totalPriceObservable
             .bind(to: totalSumLabel.rx.text)
             .disposed(by: disposeBag)
         
-        chartItems
-            .debug("fetched")
-            .subscribe(onNext: { dict in
-            print(dict)
-        }).disposed(by: disposeBag)
-        
+        // 오늘의 매출 및 판매 항목을 조회한다.
+        // 챠트 설정
+        self.setChart()
     }
-    
-    // MARK: - Business Logic
-    
-    var chartItems: BehaviorRelay<[String : Int64]> = BehaviorRelay(value: [:])
-    var totalPrice: BehaviorRelay<Int> = BehaviorRelay(value: 0)
-    
-    var disposeBag: DisposeBag = DisposeBag()
     
     /// 오늘의 매출 및 판매 항목을 조회한다.
-    func fetch() {
-        
-        let frDate = Date().startTime()
-        let toDate = Date().endTime()
-        
-        let realm = RealmCenter.INSTANCE.getRealm()
-        
-        let dbOrders = realm.objects(DBOrder.self)
-            .filter("orderedDate >= %@", frDate)
-            .filter("orderedDate <= %@", toDate)
-            .sorted(byKeyPath: "orderedDate", ascending: false)
-        
-        let products = realm.objects(DBProducts.self)
-        
-        var dict = [String:Int64]()
-        
-        products.forEach { (product) in
-            dict.updateValue(0, forKey: product.productId)
-        }
-        
-        var totalSum = 0
-        
-        dbOrders
-            .enumerated()
-            .map { _, item in
-
-                totalSum += Int(item.totalPrice)
-                
-                item.orderedList.forEach({
-                    dict.updateValue(((dict[$0.productId] ?? 0) + $0.productQty), forKey: $0.productId)
-                })
-            }
-        
-        chartItems.accept(dict)
-        totalPrice.accept(totalSum)
-    }
-    
     /// 챠트 설정
     func setChart() {
         
         // 챠트 데이터
         var dataEntry = [PieChartDataEntry]()
         
-        chartItems
+        viewModel.chartItemObservable
             .map { $0.enumerated().map { _, item in
                 if item.value > 0 {
                     dataEntry.append(PieChartDataEntry(value: Double(item.value), label: item.key))
                 }
             }}
-            .subscribe()
+            .subscribe(onNext: { [weak self] in
+                self?.setDataEntry(dataEntry: dataEntry)
+            })
             .disposed(by: disposeBag)
-            
+    }
+    
+    func setDataEntry(dataEntry: [PieChartDataEntry]) {
+        
         chartView.clear()
         
         let legend = chartView.legend
