@@ -85,7 +85,7 @@ class OrderQueueViewController: UIViewController {
             }.disposed(by: disposeBag)
         
         // 스크롤 다운
-        viewModel
+        /*viewModel
             .listItemsObservable
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { objects in
@@ -95,7 +95,7 @@ class OrderQueueViewController: UIViewController {
                     self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                 }
             })
-            .disposed(by: disposeBag)
+            .disposed(by: disposeBag)*/
         
         // 왼쪽으로 밀어서 삭제
         tableView.rx.itemDeleted
