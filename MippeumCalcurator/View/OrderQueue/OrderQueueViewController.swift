@@ -13,6 +13,9 @@ import RxCocoa
 import RealmSwift
 
 class OrderQueueViewController: UIViewController {
+    
+    static let identifier = "OrderQueueViewController"
+    
     let viewModel: OrderQueueViewModelType
     var disposeBag = DisposeBag()
 
@@ -60,7 +63,7 @@ class OrderQueueViewController: UIViewController {
         // 처음보이거나 재조회시 펫치요구
         Observable
             .merge([firstLoad.map { _ in }, reload])
-            .bind(to: viewModel.doFetching)
+            .bind(to: viewModel.doFetchingRealm)
             .disposed(by: disposeBag)
         
         // 액티비티 인디케이터
@@ -80,6 +83,19 @@ class OrderQueueViewController: UIViewController {
             .bind(to: tableView.rx.items(cellIdentifier: OrderQueueCell.identifier, cellType: OrderQueueCell.self)) { (_, item, cell) in
                 cell.itemObserver.onNext(item)
             }.disposed(by: disposeBag)
+        
+        // 스크롤 다운
+        viewModel
+            .listItemsObservable
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { objects in
+                
+                if objects.count > 0 {
+                    let indexPath = IndexPath(row: max((objects.count - 1), 0), section: 0)
+                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
         
         // 왼쪽으로 밀어서 삭제
         tableView.rx.itemDeleted

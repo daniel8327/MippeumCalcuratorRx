@@ -12,8 +12,7 @@ import RxSwift
 import RxCocoa
 
 protocol OrderQueueViewModelType {
-    
-    var doFetching: AnyObserver<Void> { get }
+    var doFetchingRealm: AnyObserver<Void> { get }
     
     var activatingObservable: Observable<Bool> { get }
     var totalPriceObservable: Observable<String> { get }
@@ -23,29 +22,31 @@ protocol OrderQueueViewModelType {
 }
 
 class OrderQueueViewModel: OrderQueueViewModelType {
-    
     let disposeBag = DisposeBag()
     
     // INPUT
-    var doFetching: AnyObserver<Void>
+    var doFetchingRealm: AnyObserver<Void>
     
     // OUTPUT
     let activatingObservable: Observable<Bool>
     var totalPriceObservable: Observable<String>
     var listItemsObservable: Observable<[OrderQueueModel]>
-    
+
+    // Subject
     let menuSubject = BehaviorRelay<(Int, [OrderQueueModel])>(value: (0, []))
     
     init(_ orderQueue: OrderQueueFetchable = OrderQueueStore()) {
         
         // Subject
-        let fetching = PublishSubject<Void>()
-        
         let activatingSubject = BehaviorSubject<Bool>(value: false)
+        let fetchingRealm = PublishSubject<Void>()
         
-        doFetching = fetching.asObserver()
+        // INPUT 연결
+        // realm 조회 옵져버 연결
+        doFetchingRealm = fetchingRealm.asObserver()
         
-        fetching
+        // realm 조회 처리
+        fetchingRealm
             .do(onNext: { _ in activatingSubject.onNext(true)})
             .flatMap { orderQueue.fetchOrderQueue() }
             .map { $0 }
@@ -53,12 +54,15 @@ class OrderQueueViewModel: OrderQueueViewModelType {
             .subscribe(onNext: menuSubject.accept)
             .disposed(by: disposeBag)
         
+        // 총 매출 처리
         totalPriceObservable = menuSubject
             .map { $0.0.currencyKR() }
         
+        // 주문 Queue 데이터 처리
         listItemsObservable = menuSubject
             .map { $0.1 }
         
+        // 화면 구성 처리
         activatingObservable = activatingSubject
             .distinctUntilChanged()
     }
@@ -68,9 +72,7 @@ class OrderQueueViewModel: OrderQueueViewModelType {
     func deleteRow(indexPath: IndexPath) {
         
         var newList = menuSubject.value.1
-        
         let realm = RealmCenter.INSTANCE.getRealm()
-        
         let data = realm.objects(DBOrder.self).filter("orderedDateKey == %@", newList[indexPath.row].orderedDate)
 
         realm.beginWrite()
@@ -86,7 +88,7 @@ class OrderQueueViewModel: OrderQueueViewModelType {
             try realm.commitWrite()
 
             newList.remove(at: indexPath.row)
-            doFetching.onNext(()) // 재조회 요청
+            doFetchingRealm.onNext(()) // 재조회 요청
             
         } catch let error {
             print("tableView Row Delete failed .. \(error.localizedDescription)")

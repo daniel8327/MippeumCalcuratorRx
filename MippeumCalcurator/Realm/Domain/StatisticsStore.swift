@@ -11,11 +11,14 @@ import Foundation
 import RxSwift
 import RealmSwift
 
-class StatisticsStore {
+protocol StatisticsFetchable {
+    func fetchStatistics() -> Observable<(Int, [String:Int64])>
+}
+
+class StatisticsStore: StatisticsFetchable {
     func fetchStatistics() -> Observable<(Int, [String:Int64])> {
         
         return Observable.create { emitter -> Disposable in
-            
             self.fetch { result  in
                 switch result {
                 case let .success(data):
@@ -25,12 +28,12 @@ class StatisticsStore {
                     emitter.onError(error)
                 }
             }
-            
             return Disposables.create()
         }
     }
     
     /// 오늘의 매출 및 판매 항목을 조회한다.
+    /// - Parameter onComplete: (Result<(Int, [String:Int64]), Error>)
     func fetch(onComplete: @escaping (Result<(Int, [String:Int64]), Error>) -> Void) {
         
         DispatchQueue.global(qos: .background).async {

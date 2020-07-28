@@ -17,12 +17,16 @@ protocol ReceiptViewModelType {
 }
 
 class ReceiptViewModel: ReceiptViewModelType {
+    /*let disposeBag = DisposeBag()*/ // Observable만 존재하면 subscribe를 하지 않아서 disposeBag이 필요없음
+    
     let orderListEachCount: Observable<String>
     let orderListEachSum: Observable<String>
     let totalPrice: Observable<String>
     
     init(_ orderedMenuItems: [MenuModel] = []) {
+        
         let menus = Observable.just(orderedMenuItems)
+        
         let totalSum = menus.map { $0.map { $0.price * $0.count }.reduce(0, +) }
         
         orderListEachCount = menus

@@ -19,7 +19,6 @@ class OrderQueueStore: OrderQueueFetchable {
     func fetchOrderQueue() -> Observable<(Int, [OrderQueueModel])> {
         
         return Observable.create { emitter -> Disposable in
-            
             self.fetch { data in
                 switch data {
                 case let .success(data):
@@ -29,11 +28,12 @@ class OrderQueueStore: OrderQueueFetchable {
                     emitter.onError(error)
                 }
             }
-            
             return Disposables.create()
         }
     }
     
+    /// 주문 내역 조회 
+    /// - Parameter onComplete: (Result<(Int, [OrderQueueModel]), Error>)
     func fetch(onComplete: @escaping (Result<(Int, [OrderQueueModel]), Error>) -> Void) {
         
         DispatchQueue.global(qos: .background).async {

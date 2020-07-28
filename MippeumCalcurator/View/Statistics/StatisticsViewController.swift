@@ -14,6 +14,8 @@ import RxSwift
 import RxCocoa
 
 class StatisticsViewController: UIViewController {
+    
+    static let identifier = "StatisticsViewController"
 
     let viewModel: StatisticsViewModelType
     var disposeBag = DisposeBag()
@@ -56,10 +58,10 @@ class StatisticsViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        // 처음보이거나 재조회시 펫치요구
+        // 처음 펫치요구
         firstLoad
             .map { _ in }
-            .bind(to: viewModel.doFetching)
+            .bind(to: viewModel.doFetchingRealm)
             .disposed(by: disposeBag)
         
         // 오늘의 총 매출
@@ -85,12 +87,14 @@ class StatisticsViewController: UIViewController {
                     dataEntry.append(PieChartDataEntry(value: Double(item.value), label: item.key))
                 }
             }}
-            .subscribe(onNext: { [weak self] in
+            .subscribe(onNext: { [weak self] _ in
                 self?.setDataEntry(dataEntry: dataEntry)
             })
             .disposed(by: disposeBag)
     }
     
+    /// 챠트에 들어갈 데이터엔트리를 설정한다.
+    /// - Parameter dataEntry: [PieChartDataEntry]
     func setDataEntry(dataEntry: [PieChartDataEntry]) {
         
         chartView.clear()

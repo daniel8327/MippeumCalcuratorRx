@@ -15,6 +15,8 @@ class OrderQueueCell: UITableViewCell {
     
     static let identifier = "OrderQueueCell"
     
+    private let cellDisposeBag = DisposeBag()
+    
     var disposeBag = DisposeBag()
     let itemObserver: AnyObserver<OrderQueueModel>
     
@@ -45,28 +47,27 @@ class OrderQueueCell: UITableViewCell {
                 self?.orderDateLabel.text = dateStr
                 self?.orderListLabel.text = data.orderedList
             })
-            .disposed(by: disposeBag)
+            .disposed(by: cellDisposeBag)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        print("awakeFromNib")
+        //print("awakeFromNib")
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        print("prepareForReuse")
+        disposeBag = DisposeBag()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        print("""
+        /*print("""
             setSelected: \(selected)
             animated: \(animated)
-            """)
-        // Configure the view for the selected state
+            """)*/
     }
     
     // MARK: - InterfaceBuilder Links

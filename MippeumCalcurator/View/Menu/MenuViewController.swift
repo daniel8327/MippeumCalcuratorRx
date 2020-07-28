@@ -14,30 +14,35 @@ import RxViewController
 
 class MenuViewController: UIViewController {
     
+    let viewModel: MenuViewModelType
+    var disposeBag: DisposeBag = DisposeBag()
+    
+    init(viewModel: MenuViewModelType = MenuViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        viewModel = MenuViewModel()
+        super.init(coder: aDecoder)
+    }
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.refreshControl = UIRefreshControl()
         setBinding()
-        fetch()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let identifier = segue.identifier ?? ""
+        
         if identifier == ReceiptViewController.identifier,
-            let menus = sender as? [(menu: Menu, count: Int)],
+            let menus = sender as? [MenuModel],
             let targetVC = segue.destination as? ReceiptViewController {
-            
-            var menuModels = [MenuModel]()
-            
-            _ = menus
-                .filter { $0.count > 0 }
-                .map {
-                menuModels.append(MenuModel(item: $0.menu.item, price: $0.menu.price, count: $0.count))
-            }
-            targetVC.viewModel = ReceiptViewModel(menuModels)
+                targetVC.viewModel = ReceiptViewModel(menus)
         }
     }
     
@@ -45,262 +50,114 @@ class MenuViewController: UIViewController {
     
     func setBinding() {
         
-        rx.viewWillAppear
-            .debug("viewWillAppear")
-            .map { _ in true}
+        let firstLoad = rx.viewWillAppear
             .take(1)
-            .subscribe(onNext: { [weak navigationController] _ in
-                navigationController?.isNavigationBarHidden = true
+            .map { _ in false}
+        
+        let dispappear = rx.viewWillDisappear
+            .take(1)
+            .map { _ in false }
+        
+        // 처음 보이고 사라질때 네비게이션 제어
+        Observable.merge(
+            [firstLoad, dispappear])
+            .subscribe(onNext: { [weak navigationController] bool in
+                navigationController?.isNavigationBarHidden = bool
             })
             .disposed(by: disposeBag)
         
         // 당겨서 새로고침
-        let refreshControl = UIRefreshControl()
-        refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: fetch)
+        let reload = tableView.refreshControl?.rx.controlEvent(.valueChanged).map { _ in } ?? Observable.just(())
+        
+        // 처음보이거나 재조회시 펫치요구
+        Observable.merge([firstLoad.map { _ in () }, reload])
+            .bind(to: viewModel.doFetchingRealm)
             .disposed(by: disposeBag)
-        tableView.refreshControl = refreshControl
+
+        // 처음 보일때 하고 clear 버튼 눌렀을 때
+        let viewDidAppear = rx.viewWillAppear.map { _ in () }
+        let whenClearTap = clearButton.rx.tap.map { _ in () }
         
-        // viewWillAppear || clearButton 클릭시
-        Observable.merge([rx.viewWillAppear.map { _ in }, clearButton.rx.tap.map { _ in }])
-            .debug("merge")
-            .withLatestFrom(menuItems)
-            .map { $0.map { ($0.menu, 0)}}
-            .bind(to: menuItems)
+        Observable.merge([viewDidAppear, whenClearTap])
+            .bind(to: viewModel.doClearing)
             .disposed(by: disposeBag)
-        
-        /* 취소 clearButton 클릭시
-         clearButton.rx.tap
-         .debug("clearButton")
-         .withLatestFrom(menuItems)
-         .map { $0.map { ($0.menu, 0)}}
-         .bind(to: menuItems)
-         .disposed(by: disposeBag)*/
-        
+
         // tableView bind
-        menuItems
+        viewModel.menuObservable
             .debug("tableview")
-            .bind(to: tableView.rx.items(cellIdentifier: MenuCell.identifier, cellType: MenuCell.self)) { index, item, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: MenuCell.identifier, cellType: MenuCell.self)) { _, item, cell in
                 
-                cell.title.setTitle(item.menu.item, for: .normal)
-                cell.price.text = item.menu.price.currencyKR()
+                cell.title.setTitle(item.item, for: .normal)
+                cell.price.text = item.price.currencyKR()
                 cell.count.text = item.count.toDecimalFormat()
-                cell.onChanged  = { [weak self] data in
+                
+                cell.onChanged  = { [weak self] count in
                     guard let self = self else { return }
-                    let count = max((item.count + data), 0)
-                    
-                    var changedMenu: [(menu: Menu, count: Int)] = self.menuItems.value
-                    changedMenu[index] = (item.menu, count)
-                    self.menuItems.accept(changedMenu)
+                    self.viewModel.doAddCounting.onNext((menuModel: item, sum: count))
                 }
         }.disposed(by: disposeBag)
         
-        let orderedCount = menuItems
-            .map { $0.map { $0.count }.reduce(0, +) }
-            .asObservable()
-        
-        // 총 구매한 아이템 갯수 itemCountLabel 방법 1
-        orderedCount
-            .map { "\($0)" }
-            .bind(to: itemCountLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        /*/ 총 구매한 아이템 갯수 itemCountLabel 방법 2
-        menuItems
-            .debug("itemCountLabel")
-            .map { $0.map { $0.count }.reduce(0, +) }
-            .map { "\($0)" }
-            .bind(to: itemCountLabel.rx.text)
-            .disposed(by: disposeBag)*/
-        
         // 최종 구매액 totalPriceLabel
-        menuItems
-            .debug("totalPriceLabel")
-            .map { $0.map { $0.menu.price * $0.count }.reduce(0, +) }
-            .map { $0.currencyKR() }
+        viewModel.totalPriceObservable
             .bind(to: totalPriceLabel.rx.text)
             .disposed(by: disposeBag)
         
-        ///TODO  orderedCount 와 탭을 Operator를 써서 ($0 > 0, true) 일때 처리
-        
-        // 주문내역 orderHistory
-        orderHistory.rx.tap
-            .debug("orderHistory")
-            .withLatestFrom(menuItems)
-            .map { $0.map { $0.count }.reduce(0, +)} // 갯수 체크
-            .do(onNext: { [weak self] allCount in
-                if allCount > 0 {
-                    do {
-                        try self?.saveRealm()
-                    } catch let err {
-                        print("error occur \(err)")
-                        return
-                    }
-                }
-            })
-            .map { _ in "OrderQueueViewController" }
-            .subscribe(onNext: { [weak self] identifier in
-                self?.performSegue(withIdentifier: identifier, sender: self?.menuItems.value)
-            })
+        // 선택된 아이템 총개수
+        viewModel.totalSelectedCountObservable
+            .bind(to: itemCountLabel.rx.text)
             .disposed(by: disposeBag)
-            
-        // 주문 orderButton
+        
+        // 주문 orderButton 눌렀을때
         orderButton.rx.tap
-            .debug("orderButton")
-            .withLatestFrom(menuItems)
-            .map { $0.map { $0.count }.reduce(0, +)} // 갯수 체크
-            .do(onNext: { [weak self] allCount in
-                if allCount <= 0 { self?.showAlert("주문 실패", "주문해주세요") }
-            })
-            .filter { $0 > 0 }
-            //.map { _ in "OrderQueueViewController" }
+            .debug("주문 orderButton 눌렀을때")
+            .bind(to: viewModel.doOrdering)
+            .disposed(by: disposeBag)
+        
+        // 주문 orderButton 이동 X (realm 저장후 초기화)
+        
+        // 주문내역 orderHistory 눌렀을때
+        orderHistory.rx.tap
+            .bind(to: viewModel.goOrderHisory)
+            .disposed(by: disposeBag)
+        
+        // 주문내역 orderHistory 이동
+        viewModel.showOrderHistoryObservable
             .subscribe(onNext: { [weak self] _ in
-
-                do {
-                    try self?.saveRealm()
-                } catch let err {
-                    print("error occur \(err)")
-                    return
-                }
-                // 주문완료시 초기화
-                self?.clearButton.sendActions(for: .touchUpInside)
+                self?.performSegue(withIdentifier: OrderQueueViewController.identifier, sender: nil)
             })
             .disposed(by: disposeBag)
 
-        // 영수증보기 orderReceipt
+        // 영수증보기 orderReceipt 눌렀을때
         orderReceipt.rx.tap
-            .debug("orderReceipt")
-            .withLatestFrom(menuItems)
-            .map { $0.map { $0.count }.reduce(0, +)} // 갯수 체크
-            .do(onNext: { [weak self] allCount in
-                if allCount <= 0 { self?.showAlert("주문 실패", "주문해주세요") }
-            })
-            .filter { $0 > 0 }
-            .map { _ in "ReceiptViewController" }
-            .subscribe(onNext: { [weak self] identifier in
-
-                do {
-                    try self?.saveRealm()
-
-                } catch let err {
-                    print("error occur \(err)")
-                    return
-                }
-                self?.performSegue(withIdentifier: identifier, sender: self?.menuItems.value)
+            .bind(to: viewModel.goReceipt)
+            .disposed(by: disposeBag)
+        
+        // 영수증보기 orderReceipt 이동
+        viewModel.showReceiptObservable
+            .subscribe(onNext: { [weak self] data in
+                self?.performSegue(withIdentifier: ReceiptViewController.identifier, sender: data)
             })
             .disposed(by: disposeBag)
-    }
-    
-    // MARK: - Business Logic
-    
-    let menuItems: BehaviorRelay<[(menu: Menu, count: Int)]> = BehaviorRelay(value: [])
-    let orderedCount: BehaviorRelay<Int> = BehaviorRelay(value: 0)
-    
-    var disposeBag: DisposeBag = DisposeBag()
-    
-    /// 판매 목록 조회
-    /// 1. CoreData
-    /// 2. 없으면 서버에서 가져오기
-    func fetch() {
         
-        indicator.isHidden = false
+        // 에러 처리
+        viewModel.errorObservable
+            .map { $0.domain }
+            .subscribe(onNext: { [weak self] message in
+                self?.showAlert("Order Fail", message)
+            })
+            .disposed(by: disposeBag)
         
-        let realm = RealmCenter.INSTANCE.getRealm()
-        
-        // CoreData 존재시
-        if nil != realm.objects(DBProducts.self).first {
-            
-            var menus: [(menu: Menu, count: Int)] = []
-            
-            let products = realm.objects(DBProducts.self).sorted(byKeyPath: "ordering")
-            
-            products.forEach { item in
-                menus.append((menu: Menu(item: item.productId, price: Int(item.productPrice)), count: 0))
-            }
-            
-            menuItems.accept(menus)
-            
-            self.tableView.refreshControl?.endRefreshing()
-            indicator.isHidden = true
-            
-        } else {
-            
-            APIService.fetchAllMenusRx()
-                .map { data in
-                    struct Response: Decodable {
-                        let menus: [Menu]
-                    }
-                    guard let response = try? JSONDecoder().decode(Response.self, from: data) else {
-                        throw NSError(domain: "Decoding error", code: -1, userInfo: nil)
-                    }
-                    return response.menus.map { ($0, 0) }
+        // 액티비티 인디케이터
+        viewModel.activatingObservable
+            .map { !$0 }
+            .observeOn(MainScheduler.instance)
+            .do(onNext: { [weak self] finished in
+                if finished {
+                    self?.tableView.refreshControl?.endRefreshing()
                 }
-                .observeOn(MainScheduler.instance)
-                .do(onNext: { data in
-                    _ = data
-                        .enumerated()
-                        .map { index, item in
-
-                            realm.beginWrite()
-                            realm.add(DBProducts(productId: item.menu.item, productPrice: Int64(item.menu.price), ordering: Int64(index)), update: .all)
-                            try? realm.commitWrite()
-                    }
-                }, onError: { [weak self] error in
-                    self?.showAlert("Fetch Fail", error.localizedDescription)
-                    
-                    }, onDispose: { [weak self] in
-                        self?.indicator.isHidden = true
-                        self?.tableView.refreshControl?.endRefreshing()
-                })
-                .bind(to: menuItems)
-                .disposed(by: disposeBag)
-        }
-    }
-    
-    /// CoreData 저장
-    /// - Throws: Exception
-    func saveRealm() throws {
-        
-        /// menuItem -> realm data
-        /// - Parameter list: <#list description#>
-        /// - Returns: <#description#>
-        func menuItemToRealmData(menuItems: [(menu: Menu, count: Int)]) -> (DBOrder, [DBOrderList]) {
-            
-            var dbOrderLists = [DBOrderList]()
-            let date = Date()
-            let orderedDateKey = date.description
-            
-            // total sum 구하기
-            let totalSum = menuItems.map {
-                $0.menu.price * $0.count
-            }.reduce(0, +)
-            
-            let dbOrder = DBOrder(orderedDateKey: orderedDateKey, orderedDate: date, totalPrice: Int64(totalSum), isDone: false)
-            
-            _ = menuItems.map {
-                dbOrderLists.append(DBOrderList(dbOrder: dbOrder, productId: $0.menu.item, productQty: Int64($0.count)))
-            }
-            
-            return (dbOrder, dbOrderLists)
-        }
-        
-        let realm = RealmCenter.INSTANCE.getRealm()
-        
-        realm.beginWrite()
-        
-        do {
-            let (dbOrder, dbOrderList) = menuItemToRealmData(menuItems: menuItems.value.filter { $0.count > 0 })
-            
-            realm.add(dbOrder)
-            realm.add(dbOrderList)
-            try realm.commitWrite()
-        } catch let error {
-            
-            if realm.isInWriteTransaction {
-                realm.cancelWrite()
-            }
-            throw error
-        }
+            })
+            .bind(to: indicator.rx.isHidden)
+            .disposed(by: disposeBag)
     }
     
     // MARK: - InterfaceBuilder Links

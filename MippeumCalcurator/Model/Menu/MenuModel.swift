@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MenuModel {
+struct MenuModel: Decodable {
     var item: String
     var price: Int
     var count: Int
@@ -23,5 +23,9 @@ struct MenuModel {
         self.item = item
         self.price = price
         self.count = count
+    }
+    
+    func countUpdate(_ count: Int) -> MenuModel {
+        return MenuModel(item: item, price: price, count: count)
     }
 }
