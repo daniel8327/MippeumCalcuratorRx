@@ -36,7 +36,7 @@ class StatisticsStore: StatisticsFetchable {
     /// - Parameter onComplete: (Result<(Int, [String:Int64]), Error>)
     func fetch(onComplete: @escaping (Result<(Int, [String:Int64]), Error>) -> Void) {
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             
             let frDate = Date().startTime()
             let toDate = Date().endTime()

@@ -36,7 +36,7 @@ class OrderQueueStore: OrderQueueFetchable {
     /// - Parameter onComplete: (Result<(Int, [OrderQueueModel]), Error>)
     func fetch(onComplete: @escaping (Result<(Int, [OrderQueueModel]), Error>) -> Void) {
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .userInteractive).async {
             
             let frDate = Date().startTime()
             let toDate = Date().endTime()

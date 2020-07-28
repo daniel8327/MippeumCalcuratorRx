@@ -66,7 +66,7 @@
 		64331C6D24C67942008EFAAA /* DBOrderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBOrderList.swift; sourceTree = "<group>"; };
 		64331C6F24C679A1008EFAAA /* DBProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProducts.swift; sourceTree = "<group>"; };
 		64331C7124C67AEE008EFAAA /* RealmCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCenter.swift; sourceTree = "<group>"; };
-		64DFF49124C4BA6900FF3976 /* MippeumCalcuratorRx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MippeumCalcuratorRx.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DFF49124C4BA6900FF3976 /* 미쁨김밥 계산기.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "미쁨김밥 계산기.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DFF49424C4BA6900FF3976 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64DFF49624C4BA6900FF3976 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		64DFF49824C4BA6900FF3976 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		64DFF49224C4BA6900FF3976 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				64DFF49124C4BA6900FF3976 /* MippeumCalcuratorRx.app */,
+				64DFF49124C4BA6900FF3976 /* 미쁨김밥 계산기.app */,
 				64DFF4AA24C4BA6C00FF3976 /* MippeumCalcuratorRxTests.xctest */,
 				64DFF4B524C4BA6C00FF3976 /* MippeumCalcuratorRxUITests.xctest */,
 			);
@@ -401,7 +401,7 @@
 			);
 			name = MippeumCalcuratorRx;
 			productName = MippeumCalcurator;
-			productReference = 64DFF49124C4BA6900FF3976 /* MippeumCalcuratorRx.app */;
+			productReference = 64DFF49124C4BA6900FF3976 /* 미쁨김밥 계산기.app */;
 			productType = "com.apple.product-type.application";
 		};
 		64DFF4A924C4BA6C00FF3976 /* MippeumCalcuratorRxTests */ = {
@@ -845,7 +845,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcurator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "미쁨김밥 계산기";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -864,7 +864,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.daniel.MippeumCalcurator;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "미쁨김밥 계산기";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

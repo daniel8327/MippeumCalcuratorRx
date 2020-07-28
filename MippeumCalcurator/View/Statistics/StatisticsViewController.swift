@@ -70,23 +70,20 @@ class StatisticsViewController: UIViewController {
             .disposed(by: disposeBag)
         
         // 오늘의 매출 및 판매 항목을 조회한다.
-        // 챠트 설정
-        self.setChart()
-    }
-    
-    /// 오늘의 매출 및 판매 항목을 조회한다.
-    /// 챠트 설정
-    func setChart() {
-        
         // 챠트 데이터
         var dataEntry = [PieChartDataEntry]()
+        var totalSum: Int64  = 0
         
         viewModel.chartItemObservable
+            .do(onNext: {
+                $0.enumerated().map { _, item in
+                    totalSum += item.value
+                }})
             .map { $0.enumerated().map { _, item in
                 if item.value > 0 {
-                    dataEntry.append(PieChartDataEntry(value: Double(item.value), label: item.key))
-                }
-            }}
+                    dataEntry.append(PieChartDataEntry(value: ((Double(item.value) / Double(totalSum)) * 100), label: item.key))
+                }}}
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.setDataEntry(dataEntry: dataEntry)
             })
