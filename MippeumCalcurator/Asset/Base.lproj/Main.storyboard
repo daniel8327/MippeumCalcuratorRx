@@ -11,8 +11,9 @@
         <!--Navigation Controller-->
         <scene sceneID="ZaQ-Vy-Ljc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="yIb-Ns-3Ne" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XQ3-y3-RKL">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yIb-Ns-3Ne" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="XQ3-y3-RKL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.33333333333334"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -23,47 +24,22 @@
             </objects>
             <point key="canvasLocation" x="-781" y="464"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--미쁨김밥 주문서-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="MippeumCalcuratorRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MenuViewController" customModule="미쁨김밥_계산기" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="adi-qq-2Ph">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nic-64-Wtc">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미쁨김밥 주문서" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-JY-uwz">
-                                                <rect key="frame" x="20" y="10" width="188" height="40"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="v53-1J-V0H">
-                                                <rect key="frame" x="357" y="11.666666666666664" width="37" height="37"/>
-                                                <color key="color" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="v53-1J-V0H" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="k4e-JY-uwz" secondAttribute="trailing" constant="16" id="4kz-sU-Pcf"/>
-                                            <constraint firstItem="v53-1J-V0H" firstAttribute="centerY" secondItem="k4e-JY-uwz" secondAttribute="centerY" id="5yG-qa-H6b"/>
-                                            <constraint firstAttribute="trailing" secondItem="v53-1J-V0H" secondAttribute="trailing" constant="20" id="C8r-Qj-d8n"/>
-                                            <constraint firstItem="k4e-JY-uwz" firstAttribute="top" secondItem="Nic-64-Wtc" secondAttribute="top" constant="10" id="Dea-5V-vzk"/>
-                                            <constraint firstAttribute="height" constant="60" id="SIT-Yv-i6d"/>
-                                            <constraint firstItem="k4e-JY-uwz" firstAttribute="leading" secondItem="Nic-64-Wtc" secondAttribute="leading" constant="20" id="mR5-F5-e3h"/>
-                                            <constraint firstAttribute="bottom" secondItem="k4e-JY-uwz" secondAttribute="bottom" constant="10" id="oob-mw-Ifq"/>
-                                        </constraints>
-                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5RR-ly-3Iz">
-                                        <rect key="frame" x="0.0" y="60" width="414" height="589"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="605"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuCell" id="S2u-L6-wVu" customClass="MenuCell" customModule="MippeumCalcuratorRx" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MenuCell" id="S2u-L6-wVu" customClass="MenuCell" customModule="미쁨김밥_계산기" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="50.333332061767578"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S2u-L6-wVu" id="CI1-R2-sME">
@@ -103,22 +79,37 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KV8-rl-kRs">
-                                                            <rect key="frame" x="179" y="10.333333333333336" width="110" height="30"/>
+                                                            <rect key="frame" x="179" y="10.333333333333336" width="114" height="30"/>
                                                             <subviews>
                                                                 <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpX-9J-7Eo">
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                     <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <state key="normal" title="-1"/>
+                                                                    <state key="normal" title=" -1 "/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="5"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </button>
                                                                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRX-xf-DJM">
                                                                     <rect key="frame" x="40" y="0.0" width="30" height="30"/>
                                                                     <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <state key="normal" title="+5"/>
+                                                                    <state key="normal" title=" +5 "/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="5"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </button>
                                                                 <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yby-Wd-p1J">
-                                                                    <rect key="frame" x="80" y="0.0" width="30" height="30"/>
+                                                                    <rect key="frame" x="80" y="0.0" width="34" height="30"/>
                                                                     <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <state key="normal" title="+10"/>
+                                                                    <state key="normal" title=" +10 "/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                            <integer key="value" value="5"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -153,7 +144,7 @@
                                         </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8f-q2-OUg">
-                                        <rect key="frame" x="0.0" y="649" width="414" height="127"/>
+                                        <rect key="frame" x="0.0" y="605" width="414" height="127"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFO-It-QUB">
                                                 <rect key="frame" x="20" y="10" width="34" height="30"/>
@@ -197,7 +188,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2C1-b2-by5">
-                                        <rect key="frame" x="0.0" y="776" width="414" height="42"/>
+                                        <rect key="frame" x="0.0" y="732" width="414" height="42"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gB-YL-PX4">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="42"/>
@@ -227,17 +218,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="v53-1J-V0H">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="color" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="v53-1J-V0H" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="6NZ-5D-80n"/>
                             <constraint firstItem="adi-qq-2Ph" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Du-XH-838"/>
                             <constraint firstItem="adi-qq-2Ph" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="B0k-zX-dnG"/>
+                            <constraint firstItem="v53-1J-V0H" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KtM-O5-Ohh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v53-1J-V0H" secondAttribute="trailing" id="XRT-su-ZnG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="adi-qq-2Ph" secondAttribute="bottom" id="eWK-EO-7bL"/>
+                            <constraint firstAttribute="bottom" secondItem="v53-1J-V0H" secondAttribute="bottom" id="lkN-q8-lcq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="adi-qq-2Ph" secondAttribute="trailing" id="o9z-WP-G8T"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fyM-0h-kQK"/>
+                    <navigationItem key="navigationItem" title="미쁨김밥 주문서" largeTitleDisplayMode="always" id="fyM-0h-kQK"/>
                     <connections>
                         <outlet property="clearButton" destination="SFO-It-QUB" id="AzQ-tT-6xR"/>
                         <outlet property="indicator" destination="v53-1J-V0H" id="zQZ-OE-Kdt"/>
@@ -253,24 +252,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6" y="464"/>
+            <point key="canvasLocation" x="5.7971014492753632" y="463.39285714285711"/>
         </scene>
-        <!--Receipt-->
+        <!--주문 상세내역-->
         <scene sceneID="CMR-HX-2FU">
             <objects>
-                <viewController title="Receipt" id="oFE-gJ-9tb" customClass="ReceiptViewController" customModule="MippeumCalcuratorRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="주문 상세내역" id="oFE-gJ-9tb" customClass="ReceiptViewController" customModule="미쁨김밥_계산기" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VwJ-DJ-W3a">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1h3-lF-LH0">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="148.33333333333331" width="414" height="747.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ld-ff-wFV">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="645"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="589"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uT0-Xg-cZf">
-                                                <rect key="frame" x="20" y="0.0" width="374" height="645"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="589"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VX5-x2-23u">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20"/>
@@ -279,21 +278,8 @@
                                                             <constraint firstAttribute="height" constant="20" id="lxG-OP-5R4"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문 상세내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qf-dC-GYj">
-                                                        <rect key="frame" x="0.0" y="20" width="374" height="36"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8z-D8-Ryg">
-                                                        <rect key="frame" x="0.0" y="56" width="374" height="20"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="xUP-xk-wYy"/>
-                                                        </constraints>
-                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPz-dc-8qY">
-                                                        <rect key="frame" x="0.0" y="76" width="374" height="392"/>
+                                                        <rect key="frame" x="0.0" y="20" width="374" height="392"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p0H-xY-UJK">
                                                                 <rect key="frame" x="0.0" y="0.0" width="20" height="392"/>
@@ -322,47 +308,47 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pz5-zy-uVC">
-                                                        <rect key="frame" x="0.0" y="468" width="374" height="20"/>
+                                                        <rect key="frame" x="0.0" y="412" width="374" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="aUZ-vi-azs"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dys-ET-n3b">
-                                                        <rect key="frame" x="0.0" y="488" width="374" height="36"/>
+                                                        <rect key="frame" x="0.0" y="432" width="374" height="36"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-ZL-MDh">
-                                                        <rect key="frame" x="0.0" y="524" width="374" height="20"/>
+                                                        <rect key="frame" x="0.0" y="468" width="374" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="tdH-KX-Ek0"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gKb-KJ-0ux">
-                                                        <rect key="frame" x="0.0" y="544" width="374" height="1"/>
+                                                        <rect key="frame" x="0.0" y="488" width="374" height="1"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="eHk-2R-7hz"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wma-rU-TaK">
-                                                        <rect key="frame" x="0.0" y="545" width="374" height="20"/>
+                                                        <rect key="frame" x="0.0" y="489" width="374" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="7Mf-SQ-Zqh"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bed-3Q-Kzr">
-                                                        <rect key="frame" x="0.0" y="565" width="374" height="60"/>
+                                                        <rect key="frame" x="0.0" y="509" width="374" height="60"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVL-27-w2k">
-                                                        <rect key="frame" x="0.0" y="625" width="374" height="20"/>
+                                                        <rect key="frame" x="0.0" y="569" width="374" height="20"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="DIy-Yr-PIC"/>
@@ -399,7 +385,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="b3h-lg-Mrd"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="orderListEachCount" destination="Ops-n7-fiQ" id="mko-I1-tqf"/>
                         <outlet property="orderListEachSum" destination="KdE-2I-rvW" id="6fv-0q-N4l"/>
@@ -410,32 +395,26 @@
             </objects>
             <point key="canvasLocation" x="847.82608695652175" y="137.94642857142856"/>
         </scene>
-        <!--Order Queue View Controller-->
+        <!--주문목록-->
         <scene sceneID="MHe-EI-sVU">
             <objects>
-                <viewController id="4Xy-wO-q6Y" customClass="OrderQueueViewController" customModule="MippeumCalcuratorRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4Xy-wO-q6Y" customClass="OrderQueueViewController" customModule="미쁨김밥_계산기" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UrM-03-aLI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="U8n-8D-XUf">
-                                <rect key="frame" x="20" y="20" width="374" height="86"/>
+                                <rect key="frame" x="20" y="168.33333333333334" width="374" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문 목록" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zy-dY-XHy">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8R2-hv-KWE">
-                                        <rect key="frame" x="0.0" y="36" width="374" height="10"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="GNM-AH-akz"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBM-Yp-ghd">
-                                        <rect key="frame" x="0.0" y="46" width="374" height="30"/>
+                                        <rect key="frame" x="0.0" y="10" width="374" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="금일 매출" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kog-au-3QK">
                                                 <rect key="frame" x="0.0" y="0.0" width="249.33333333333334" height="30"/>
@@ -452,7 +431,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDt-CZ-Q09">
-                                        <rect key="frame" x="0.0" y="76" width="374" height="10"/>
+                                        <rect key="frame" x="0.0" y="40" width="374" height="10"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="NQY-Es-NrC"/>
@@ -461,10 +440,10 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h14-tn-P7F">
-                                <rect key="frame" x="0.0" y="116" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="228.33333333333331" width="414" height="633.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderQueueCell" id="tZV-0d-Uuh" customClass="OrderQueueCell" customModule="MippeumCalcuratorRx" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderQueueCell" id="tZV-0d-Uuh" customClass="OrderQueueCell" customModule="미쁨김밥_계산기" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="101.66666412353516"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tZV-0d-Uuh" id="5mu-WQ-Qab">
@@ -514,14 +493,13 @@
                         <viewLayoutGuide key="safeArea" id="XPr-i9-S5m"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="yMl-dX-Tmb">
+                    <navigationItem key="navigationItem" title="주문목록" id="yMl-dX-Tmb">
                         <barButtonItem key="rightBarButtonItem" title="통계" id="l1W-8r-tPs">
                             <connections>
                                 <segue destination="HBi-cx-k7M" kind="show" identifier="StatisticsViewController" id="34e-xz-P86"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="tableView" destination="h14-tn-P7F" id="Hgd-m3-Kpr"/>
                         <outlet property="totalSumLabel" destination="veE-Yw-jcx" id="nPd-T4-3PK"/>
@@ -531,16 +509,16 @@
             </objects>
             <point key="canvasLocation" x="848" y="843"/>
         </scene>
-        <!--Statistics View Controller-->
+        <!--통계-->
         <scene sceneID="eQt-yj-FfF">
             <objects>
-                <viewController id="HBi-cx-k7M" customClass="StatisticsViewController" customModule="MippeumCalcuratorRx" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HBi-cx-k7M" customClass="StatisticsViewController" customModule="미쁨김밥_계산기" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g5y-jp-7l9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RKp-Vw-rdk">
-                                <rect key="frame" x="20" y="0.0" width="374" height="774"/>
+                                <rect key="frame" x="20" y="148.33333333333331" width="374" height="713.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2mO-Js-Ecu">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="20"/>
@@ -604,7 +582,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8N9-w1-QzG" customClass="PieChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="56" width="374" height="718"/>
+                                        <rect key="frame" x="0.0" y="56" width="374" height="657.66666666666663"/>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -618,7 +596,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Q3v-be-fd9"/>
                     </view>
-                    <navigationItem key="navigationItem" id="vxJ-A0-f2V"/>
+                    <navigationItem key="navigationItem" title="통계" id="vxJ-A0-f2V"/>
                     <connections>
                         <outlet property="chartView" destination="8N9-w1-QzG" id="RNK-jt-7oI"/>
                         <outlet property="frDateButton" destination="8ed-d0-PVZ" id="ElY-N1-E3j"/>
