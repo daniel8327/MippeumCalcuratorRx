@@ -1,11 +1,18 @@
 # MippeumCalcurator
+<p><H3>곰튀김님의 
+ 
+RxSwift 4시간만에 끝내기 강좌에 나오는 계산기앱을 바탕으로 Realm 을 바탕으로 CRUD 구현했습니다.</H3>
+</p>
+https://www.youtube.com/watch?v=iHKBNYMWd5I&list=LLjV7B-ZHjHzJKA3vwLTyqlg&index=37&t=23s
 
-<h1>용산의 자랑 '미쁨김밥' 계산기 입니다. 저희 장모님 가게인건 안비밀..</h1>
+좋은 강의 감사합니다 :D
+
+<h4>용산의 자랑 '미쁨김밥' 계산기 입니다.</h4> <STRIKE>저희 장모님 가게인건 안비밀..</STRIKE>
 
 서울 용산구 효창원로 101-2 
 02-793-4540
 
-https://place.map.kakao.com/2099038803
+<a href="https://place.map.kakao.com/2099038803">미쁨김밥 위치</a>
 
 많이 사랑해주세요! :D
 <ul>
