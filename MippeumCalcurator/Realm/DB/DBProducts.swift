@@ -22,7 +22,7 @@ class DBProducts : Object {
         self.ordering = ordering
     }
     
-    required init() {
+    required override init() {
         self.productId = ""
         self.productPrice = 0
         self.ordering = 0

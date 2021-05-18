@@ -27,7 +27,7 @@ class DBOrder : Object {
         return ["isDone"]
     }
     
-    required init() {
+    required override init() {
         orderedDateKey = ""
         orderedDate = Date()
         totalPrice = 0

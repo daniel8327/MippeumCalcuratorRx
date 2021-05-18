@@ -15,7 +15,7 @@ class DBOrderList : Object {
     @objc dynamic var productId: String
     @objc dynamic var productQty: Int64
     
-    required init() {
+    required override init() {
         self.productId = ""
         self.productQty = 0
         super.init()
